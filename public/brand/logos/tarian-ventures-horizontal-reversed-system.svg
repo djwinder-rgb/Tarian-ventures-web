@@ -1,0 +1,11 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="360" height="100" viewBox="0 0 360 100">
+<rect width="100%" height="100%" fill="#101820"/>
+<g id="shield">
+  <path d="M20 18 L80 18 L76 34 L57 37 L57 78 L50 86 L43 78 L43 37 L24 34 Z" fill="#1F6B57"/>
+  <path d="M20 18 L80 18 L76 27 L57 30 L43 30 L24 27 Z" fill="#FFFFFF"/>
+  <path d="M25 35 L43 39 L43 78 L33 69 Q26 59 25 35 Z" fill="#FFFFFF"/>
+  <path d="M75 35 L57 39 L57 78 L67 69 Q74 59 75 35 Z" fill="#1F6B57"/>
+  <path d="M43 30 H57 V39 H43 Z" fill="#101820"/>
+</g>
+<text x="112" y="49" font-family="Arial, sans-serif" font-size="29" letter-spacing="7" fill="#FFFFFF">TARIAN</text>
+<text x="114" y="70" font-family="Arial, sans-serif" font-size="13" letter-spacing="6" fill="#FFFFFF">VENTURES</text></svg>
