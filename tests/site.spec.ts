@@ -46,7 +46,7 @@ test('all local links and asset references resolve; titles and descriptions are 
     await page.goto(route);
     titles.add(await page.title());
     descriptions.add((await page.locator('meta[name="description"]').getAttribute('content'))!);
-    for (const ref of await page.locator('[href], [src], meta[property="og:image"]').evaluateAll(nodes => nodes.flatMap(node => [node.getAttribute('href'), node.getAttribute('src'), node.getAttribute('content')].filter((value): value is string => !!value)))) {
+    for (const ref of await page.locator('[href], [src], [srcset], meta[property="og:image"]').evaluateAll(nodes => nodes.flatMap(node => [node.getAttribute('href'), node.getAttribute('src'), node.getAttribute('srcset'), node.getAttribute('content')].filter((value): value is string => !!value)))) {
       if (ref.startsWith('#')) await expect(page.locator(ref)).toHaveCount(1);
       else if (ref.startsWith('/')) references.add(ref);
       else expect(ref).toMatch(/^mailto:/);
@@ -123,22 +123,20 @@ test('200% text enlargement reflows and source assets remain byte-identical', as
     expect(await page.evaluate(() => document.documentElement.scrollWidth <= innerWidth)).toBe(true);
   }
   for (const [folder, files] of Object.entries({
-    logos: ['tarian-shield.svg', 'tarian-ventures-horizontal.svg', 'tarian-ventures-horizontal-reversed.svg', 'tarian-ventures-stacked.svg'],
-    icons: ['favicon.svg', 'tarian-icon-32.png', 'tarian-icon-180.png', 'tarian-icon-512.png'],
+    logos: ['tarian-lockup-horizontal.svg', 'tarian-lockup-horizontal-reversed.svg', 'tarian-lockup-stacked.svg', 'tarian-lockup-stacked-reversed.svg', 'tarian-mark.svg', 'tarian-mark-green.svg', 'tarian-mark-midnight.svg', 'tarian-mark-white.svg'],
+    icons: ['tarian-favicon.svg', 'tarian-app-icon.svg'],
   })) for (const file of files) expect(await readFile(`public/brand/${folder}/${file}`)).toEqual(await readFile(`${folder}/${file}`));
 });
 
-test('horizontal web wordmarks fit and source logos are available for visual review', async ({ page }) => {
+test('authoritative wordmarks fit and source logos are available for visual review', async ({ page }) => {
   const sources = [
-    'logos/tarian-ventures-horizontal.svg',
-    'logos/tarian-ventures-horizontal-reversed.svg',
-    'logos/tarian-ventures-stacked.svg',
-    'logos/tarian-shield.svg',
-    'public/brand/logos/tarian-ventures-horizontal-system.svg',
-    'public/brand/logos/tarian-ventures-horizontal-reversed-system.svg',
+    'logos/tarian-lockup-horizontal.svg',
+    'logos/tarian-lockup-horizontal-reversed.svg',
+    'logos/tarian-lockup-stacked.svg',
+    'logos/tarian-lockup-stacked-reversed.svg',
   ];
   const markup = await Promise.all(sources.map(async source => `<section style="padding:20px;border-bottom:1px solid #aaa"><p>${source}</p>${await readFile(source, 'utf8')}</section>`));
-  await page.setContent(`<body style="font:16px Arial;background:#f3f1eb">${markup.join('')}</body>`);
+  await page.setContent(`<body style="font:16px Arial;background:#fff">${markup.join('')}</body>`);
   await page.screenshot({ path: 'test-results/visuals/logo-review.png', fullPage: true });
   const measurements = await page.locator('svg').evaluateAll(nodes => nodes.map(node => {
     const view = (node as SVGSVGElement).viewBox.baseVal;
@@ -148,5 +146,5 @@ test('horizontal web wordmarks fit and source logos are available for visual rev
     });
   }));
   console.log('Logo text bounds (source order):', JSON.stringify(measurements));
-  for (const index of [0, 1, 4, 5]) expect(measurements[index].every(text => text.fits)).toBe(true);
+  for (const measurement of measurements) expect(measurement.every(text => text.fits)).toBe(true);
 });

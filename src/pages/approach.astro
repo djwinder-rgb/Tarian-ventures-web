@@ -11,5 +11,5 @@ const stages = [
 ---
 <Layout title="Approach — Evidence before scale" description="We believe new ventures should earn increasing levels of investment.">
   <PageIntro label="Our approach" title="Evidence before scale."><p>We believe new ventures should earn increasing levels of investment.</p><p>Rather than beginning with a predetermined solution, we start with the problem and progressively test whether a commercially attractive opportunity exists.</p></PageIntro>
-  <div class="shell"><ol class="approach-list">{stages.map((stage, index) => <li><span class="stage-number" aria-hidden="true">0{index + 1}</span><h2>{stage.title}</h2><div class="prose">{stage.paragraphs.map(paragraph => <p>{paragraph}</p>)}</div></li>)}</ol></div>
+  <div class="shell"><ol class="approach-list" role="list">{stages.map((stage, index) => <li><span class="stage-number" aria-hidden="true">0{index + 1}</span><h2>{stage.title}</h2><div class="prose">{stage.paragraphs.map(paragraph => <p>{paragraph}</p>)}</div></li>)}</ol></div>
 </Layout>

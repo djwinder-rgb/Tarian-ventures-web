@@ -1,14 +1,8 @@
 <svg xmlns="http://www.w3.org/2000/svg" width="1200" height="630" viewBox="0 0 1200 630">
-<rect width="1200" height="630" fill="#F3F1EB"/>
-<g transform="translate(870 125) scale(2.6)">
-  <path d="M20 18 L80 18 L76 34 L57 37 L57 78 L50 86 L43 78 L43 37 L24 34 Z" fill="#1F6B57"/>
-  <path d="M20 18 L80 18 L76 27 L57 30 L43 30 L24 27 Z" fill="#101820"/>
-  <path d="M25 35 L43 39 L43 78 L33 69 Q26 59 25 35 Z" fill="#101820"/>
-  <path d="M75 35 L57 39 L57 78 L67 69 Q74 59 75 35 Z" fill="#1F6B57"/>
-  <path d="M43 30 H57 V39 H43 Z" fill="#F3F1EB"/>
-</g>
-<path d="M72 110H760M72 534H1128" stroke="#1F6B57" stroke-width="2"/>
-<g fill="#101820" font-family="Arial, sans-serif">
+<rect width="1200" height="630" fill="#FFFFFF"/>
+<g transform="translate(870 125) scale(2.6)"><path fill="#13564D" d="M 16 21.5 C 16.3 18.7 18.1 17.4 21.8 16.9 C 31.4 15.6 41.7 15.4 50 15.4 C 58.3 15.4 68.6 15.6 78.2 16.9 C 81.9 17.4 83.7 18.7 84 21.5 L 74.7 30 L 25.3 30 Z"></path><path fill="#13564D" d="M 16.6 34.8 L 44.2 41 L 44.2 89.2 C 33.3 82.7 24.4 73.7 19.6 60.5 L 16.9 44 Z"></path><path fill="#13564D" d="M 83.4 34.8 L 55.8 41 L 55.8 89.2 C 66.7 82.7 75.6 73.7 80.4 60.5 L 83.1 44 Z"></path></g>
+<path d="M72 110H760M72 534H1128" stroke="#13564D" stroke-width="2"/>
+<g fill="#13564D" font-family="Arial, sans-serif">
 <text x="72" y="80" font-size="22" letter-spacing="6">TARIAN VENTURES</text>
 <text x="72" y="236" font-size="66">Building businesses</text>
 <text x="72" y="317" font-size="66">around problems</text>
