@@ -93,9 +93,9 @@ Cloudflare routing and environment setup must still be verified on an authorised
 
 ## Branding and assets
 
-Horizontal wordmarks are used by default. Original assets are preserved. Web derivatives explicitly use the approved Arial/system fallback instead of relying on Inter being installed. There are no bundled fonts or font-service requests. The stacked source is retained but unused; consult the implementation report for its clipping assessment.
+The latest human-supplied kit is authoritative and copied unchanged into `public/brand/`. The horizontal lockup serves desktop headers; the green mark serves compact headers and About, and the white mark serves the Forest footer. SVG live text retains its supplied font stack. Page text uses Arial/system fallback, with no bundled fonts or font-service requests. See `review/brand-refinement/VISUAL_REVIEW.md` for current palette and evidence; historical decisions remain in the dated implementation report.
 
-Regenerate the project-owned Open Graph PNG from the committed SVG source with:
+Regenerate the Open Graph artwork and favicon/app PNGs from supplied SVG geometry with:
 
 ```sh
 node scripts/generate-social.mjs
@@ -103,4 +103,6 @@ node scripts/generate-social.mjs
 
 The source uses only approved geometry, palette and copy. The raster is committed, so browser tooling is not needed for production builds. See `docs/ASSET_PROVENANCE.md` before adding or changing assets. The supplied historical register remains at `guidance/ASSET_PROVENANCE.md`.
 
-The original brand pack describes these vectors as production-oriented deterministic geometry. A specialist review remains appropriate before trademark registration, large-format print or permanent signage.
+To refresh the review pack, build and serve production output at `http://127.0.0.1:4321`, then run `node scripts/review-brand.mjs` and `node scripts/contrast.mjs`. Use `--inspect` for SVG-only inspection. Captures are committed for review; updating them does not publish the site.
+
+Specialist artwork review remains appropriate before trademark registration, large-format print or permanent signage.

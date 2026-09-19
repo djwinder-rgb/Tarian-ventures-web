@@ -168,3 +168,34 @@ No browser framework runtime, downloaded fonts or photography. Logos reserve int
 Before publication, confirm the production hostname, registered company name, company number, registered office and jurisdiction; finalise Privacy/Cookies from actual enquiry-processing and hosting facts; verify mailbox operation without speculative messages; perform the human/device accessibility checks; and separately authorise/verify Cloudflare deployment settings.
 
 There are no material scope deviations. Permitted system fonts are used because no approved Inter files were supplied. Legal review placeholders and the unconfigured production domain are intentional requirements. The unused stacked logo remains unchanged. Build-time security-header generation is an implementation detail, not a runtime backend. The next gate is human review.
+
+## Brand Refinement — 19 September 2026
+
+This dated addition supersedes the visual decisions above without rewriting the historical V1 record. Verdict: **READY FOR VISUAL REVIEW**. No merge, push or deployment was performed.
+
+### Safety and scope
+
+Confirmed exact root `/Users/dwinmacmini/Development/TarianVentures/tarian-ventures-web`, fetched origin, and remained on `feature/website-v1`. Starting HEAD: `c0938fce7e34f26f0e24c8318dbf7cc88aa54c24`; fetched origin/main: `9f7a618219034174266ad165b90e36f68e221df4`; origin: `https://github.com/djwinder-rgb/tarian-ventures-web.git`. No tracked changes existed at the gate. The only untracked inputs were the ten supplied SVGs under logos/icons and `tarian-logo-kit/README.txt`, explicitly identified as intentional kit files. No unrelated work was overwritten.
+
+### Artwork and palette
+
+The five named replacement assets (horizontal, stacked, stacked-reversed, green mark, white mark) and five companion SVGs are now authoritative repository assets, unchanged. Public copies are byte-identical. All parse and fit their viewBoxes in installed Chrome. Four lockups retain live SVG text and their supplied font stack. C2PA manifests are retained but not independently authenticated. No scripts, raster images or external resource references were found. The older stacked clipping warning does not apply to the new kit.
+
+Desktop headers use the supplied horizontal lockup; compact headers and About use green marks; footers use the white mark. Stacked/reversed lockups are retained but not unnecessarily repeated. Icons use supplied vectors and local rasterisations. Social artwork uses exact supplied green mark paths. Obsolete public derivatives were removed. `docs/ASSET_PROVENANCE.md` now records source lineage, use and technical caveats.
+
+Final CSS palette: Forest `#13564D`, White `#FFFFFF`, pale tint `#F3F7F6`, Deep Ink `#12262B`, decorative rule `#D0DDDB`. These replace V1's Stone/Green/Midnight/Slate website roles. Original SVG colours remain untouched. White dominates; Forest headings, a deliberate evidence section and footer establish the new rhythm. Body Ink improves reading hierarchy. Hero geometry is lighter; venture statuses use text and strokes; Approach has separate markers and a stronger “Scale or stop” rule without progression arrows. Approved copy is unchanged.
+
+### Validation and performance
+
+- Astro/TypeScript: 25 files; zero errors, warnings or hints. Two initial tooling hints were corrected before final diagnostics.
+- Production build passed; all 14 Playwright tests passed, including axe, keyboard, no-JavaScript navigation, reflow at 1440/768/375/320, enlarged text, reduced motion, links/assets, approved copy, metadata, CSP and source/public reconciliation.
+- Meaningful text contrast passes AA: Forest/White 8.52:1; Ink/White 15.70:1; Ink/tint 14.54:1; Forest/tint 7.89:1. Decorative-only rules are lower contrast. Focus remains visible on light and Forest surfaces.
+- Zero external page requests, cookies, browser storage entries or unexpected console/page errors observed. Privacy/security controls, review noindex and dependency set are unchanged.
+- HTML 5,846 bytes / 2,141 gzip; JS unchanged 553 / 318; CSS 7,956 / 2,302; social PNG 37,963 bytes. Supplied SVG metadata increases logo bytes; retained deliberately to preserve sources. No claim of identical total payload or measured deployed Core Web Vitals is made.
+- `git diff --check` passed. Full technical findings and capture evidence are committed with the review pack.
+
+### Visual review pack and remaining decisions
+
+`review/brand-refinement/VISUAL_REVIEW.md` records exact roles/contrasts, per-context artwork, responsive decisions, compromises and all 13 production screenshots. Additional SVG inspection gallery/JSON, contrast JSON and capture results make the checks reproducible. Full-page and viewport-only hero captures are included; page content was not edited for screenshots.
+
+Human review should decide whether the desktop shield contour earns its space, whether mark-only mobile identity is sufficient and whether Forest usage conveys a venture development company. Live wordmark text can vary by operating system. Tall mobile legal-review footers remain intentional. Safari/Firefox, assistive-technology/device checks and existing company/domain/legal publication prerequisites remain outstanding. Technical passing results do not substitute for visual approval.
