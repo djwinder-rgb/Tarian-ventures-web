@@ -1,0 +1,47 @@
+{
+  "browser": "153.0.8010.48",
+  "inventory": [
+    "home-desktop-1440.png",
+    "home-hero-desktop-1440.png",
+    "home-tablet-768.png",
+    "home-mobile-375.png",
+    "home-hero-mobile-375.png",
+    "home-mobile-320.png",
+    "ventures-desktop-1440.png",
+    "ventures-mobile-375.png",
+    "approach-desktop-1440.png",
+    "approach-mobile-375.png",
+    "about-desktop-1440.png",
+    "about-mobile-375.png",
+    "contact-desktop-1440.png"
+  ],
+  "externalRequests": [],
+  "errors": [],
+  "storage": {
+    "local": 0,
+    "session": 0
+  },
+  "cookies": [],
+  "sizes": [
+    {
+      "file": "dist/index.html",
+      "bytes": 5846,
+      "gzip": 2141
+    },
+    {
+      "file": "dist/_astro/Header.astro_astro_type_script_index_0_lang.Dt-XVcj8.js",
+      "bytes": 553,
+      "gzip": 318
+    },
+    {
+      "file": "dist/_astro/Layout.znEgYb8P.css",
+      "bytes": 7956,
+      "gzip": 2302
+    },
+    {
+      "file": "public/brand/tarian-social.png",
+      "bytes": 37963,
+      "gzip": 34758
+    }
+  ]
+}

@@ -1,0 +1,15 @@
+---
+import Layout from '../layouts/Layout.astro';
+import PageIntro from '../components/PageIntro.astro';
+const stages = [
+  { title: 'Discover', paragraphs: ['We examine technological, regulatory, economic and societal change to identify problems and market gaps worth investigating.'] },
+  { title: 'Validate', paragraphs: ['We test the assumptions that would need to be true for an opportunity to succeed: customer need, market structure, competition, economics, regulatory constraints and routes to market.'] },
+  { title: 'Experiment', paragraphs: ['Where possible, we favour prototypes, pilots and real-world evidence over assumptions.', 'The objective is to learn quickly and inexpensively before committing significant capital.'] },
+  { title: 'Build', paragraphs: ['When the evidence supports continued investment, we develop the technology, partnerships and operating capability required to turn the opportunity into a viable business.'] },
+  { title: 'Scale or stop', paragraphs: ['Not every opportunity should become a company.', 'We are as interested in identifying reasons not to proceed as reasons to invest further. Capital and time move towards the opportunities where evidence continues to support the case.'] },
+];
+---
+<Layout title="Approach — Evidence before scale" description="We believe new ventures should earn increasing levels of investment.">
+  <PageIntro label="Our approach" title="Evidence before scale."><p>We believe new ventures should earn increasing levels of investment.</p><p>Rather than beginning with a predetermined solution, we start with the problem and progressively test whether a commercially attractive opportunity exists.</p></PageIntro>
+  <div class="shell"><ol class="approach-list" role="list">{stages.map((stage, index) => <li><span class="stage-number" aria-hidden="true">0{index + 1}</span><h2>{stage.title}</h2><div class="prose">{stage.paragraphs.map(paragraph => <p>{paragraph}</p>)}</div></li>)}</ol></div>
+</Layout>

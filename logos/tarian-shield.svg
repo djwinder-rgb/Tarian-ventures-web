@@ -1,9 +1,7 @@
-<svg xmlns="http://www.w3.org/2000/svg" width="100" height="100" viewBox="0 0 100 100">
-
-<g id="shield">
-  <path d="M20 18 L80 18 L76 34 L57 37 L57 78 L50 86 L43 78 L43 37 L24 34 Z" fill="#1F6B57"/>
-  <path d="M20 18 L80 18 L76 27 L57 30 L43 30 L24 27 Z" fill="#101820"/>
-  <path d="M25 35 L43 39 L43 78 L33 69 Q26 59 25 35 Z" fill="#101820"/>
-  <path d="M75 35 L57 39 L57 78 L67 69 Q74 59 75 35 Z" fill="#1F6B57"/>
-  <path d="M43 30 H57 V39 H43 Z" fill="#F3F1EB"/>
-</g></svg>
+<svg xmlns="http://www.w3.org/2000/svg" width="100" height="100" viewBox="0 0 100 100" role="img" aria-labelledby="title">
+  <title>Tarian Ventures shield</title>
+  <path fill="#1F6B57" d="M18 17H82L78 48Q76 70 50 88Q24 70 22 48Z"/>
+  <path fill="#101820" d="M18 17H82L78 29H57L50 38L43 29H22Z"/>
+  <path fill="#101820" d="M22 30L43 34V72L50 80Q25 67 22 48Z"/>
+  <path fill="#F3F1EB" d="M28 30H72L67 40H57V71L50 79L43 71V40H33Z"/>
+</svg>

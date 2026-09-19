@@ -1,0 +1,12 @@
+---
+import Layout from '../layouts/Layout.astro';
+import PageIntro from '../components/PageIntro.astro';
+import { site } from '../config/site';
+---
+<Layout title="Contact — Start a conversation" description="We are interested in speaking with organisations and individuals working on significant problems, emerging technologies and new market opportunities.">
+  <PageIntro label="Contact" title="Start a conversation."><p>We are interested in speaking with organisations and individuals working on significant problems, emerging technologies and new market opportunities.</p><p>This includes potential customers, development partners, technical specialists, infrastructure partners and investors.</p></PageIntro>
+  <div class="shell contact-list">
+    <section><h2>General enquiries</h2><a href={`mailto:${site.contact.general}`}>{site.contact.general}<span aria-hidden="true">↗</span></a></section>
+    <section><h2>Partnerships and ventures</h2><a href={`mailto:${site.contact.ventures}`}>{site.contact.ventures}<span aria-hidden="true">↗</span></a></section>
+  </div>
+</Layout>

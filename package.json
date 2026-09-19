@@ -1,0 +1,23 @@
+{
+  "name": "tarian-ventures-web",
+  "version": "1.0.0",
+  "private": true,
+  "type": "module",
+  "engines": { "node": ">=22.12.0 <27", "npm": ">=9.6.5" },
+  "packageManager": "npm@11.17.0",
+  "scripts": {
+    "dev": "astro dev --host 127.0.0.1",
+    "build": "astro build",
+    "preview": "astro preview --host 127.0.0.1",
+    "check": "astro check",
+    "test": "playwright test",
+    "validate": "npm run check && npm run build && npm test"
+  },
+  "devDependencies": {
+    "@astrojs/check": "0.9.10",
+    "@axe-core/playwright": "4.13.0",
+    "@playwright/test": "1.63.0",
+    "astro": "7.3.3",
+    "typescript": "5.9.3"
+  }
+}

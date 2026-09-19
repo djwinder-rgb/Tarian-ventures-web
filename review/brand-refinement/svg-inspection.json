@@ -1,0 +1,620 @@
+[
+  {
+    "source": "logos/tarian-lockup-horizontal.svg",
+    "bytes": 8832,
+    "sha256": "0c6838aba428aded9bde8f11034be3ecff74d652de05d9c256ec70da423f8620",
+    "valid": true,
+    "width": "620",
+    "height": "200",
+    "viewBox": "0 0 620 200",
+    "colours": [
+      "#13564D",
+      "#101820",
+      "#35434A"
+    ],
+    "fonts": [
+      "Inter, \"Helvetica Neue\", Helvetica, Arial, sans-serif"
+    ],
+    "text": [
+      "TARIAN",
+      "VENTURES"
+    ],
+    "rasterCount": 0,
+    "scriptCount": 0,
+    "externalReferences": [],
+    "handlers": [],
+    "metadata": "Embedded C2PA manifest; retained unchanged, not independently authenticated",
+    "bounds": [
+      {
+        "element": "path",
+        "text": "",
+        "x": 48.79999923706055,
+        "y": 47.86999867439272,
+        "right": 154.19999599456787,
+        "bottom": 70.49999856948853,
+        "fits": true
+      },
+      {
+        "element": "path",
+        "text": "",
+        "x": 49.729999799728375,
+        "y": 77.93999715805057,
+        "right": 92.50999907493588,
+        "bottom": 162.25999101638808,
+        "fits": true
+      },
+      {
+        "element": "path",
+        "text": "",
+        "x": 110.48999615669254,
+        "y": 77.93999715805057,
+        "right": 153.26999838829033,
+        "bottom": 162.25999101638808,
+        "fits": true
+      },
+      {
+        "element": "text",
+        "text": "TARIAN",
+        "x": 210,
+        "y": 74,
+        "right": 417.734375,
+        "bottom": 118,
+        "fits": true
+      },
+      {
+        "element": "text",
+        "text": "VENTURES",
+        "x": 210,
+        "y": 128.39999389648438,
+        "right": 373.828125,
+        "bottom": 147.39999389648438,
+        "fits": true
+      }
+    ]
+  },
+  {
+    "source": "logos/tarian-lockup-horizontal-reversed.svg",
+    "bytes": 8903,
+    "sha256": "f06669a56d4d6c7d2960282ee1db09039a9a3fc7858032deb56191952ce9ed07",
+    "valid": true,
+    "width": "620",
+    "height": "200",
+    "viewBox": "0 0 620 200",
+    "colours": [
+      "#101820",
+      "#FFFFFF",
+      "#C9D3D0"
+    ],
+    "fonts": [
+      "Inter, \"Helvetica Neue\", Helvetica, Arial, sans-serif"
+    ],
+    "text": [
+      "TARIAN",
+      "VENTURES"
+    ],
+    "rasterCount": 0,
+    "scriptCount": 0,
+    "externalReferences": [],
+    "handlers": [],
+    "metadata": "Embedded C2PA manifest; retained unchanged, not independently authenticated",
+    "bounds": [
+      {
+        "element": "rect",
+        "text": "",
+        "x": 0,
+        "y": 0,
+        "right": 620,
+        "bottom": 200,
+        "fits": true
+      },
+      {
+        "element": "path",
+        "text": "",
+        "x": 48.79999923706055,
+        "y": 47.86999867439272,
+        "right": 154.19999599456787,
+        "bottom": 70.49999856948853,
+        "fits": true
+      },
+      {
+        "element": "path",
+        "text": "",
+        "x": 49.729999799728375,
+        "y": 77.93999715805057,
+        "right": 92.50999907493588,
+        "bottom": 162.25999101638808,
+        "fits": true
+      },
+      {
+        "element": "path",
+        "text": "",
+        "x": 110.48999615669254,
+        "y": 77.93999715805057,
+        "right": 153.26999838829033,
+        "bottom": 162.25999101638808,
+        "fits": true
+      },
+      {
+        "element": "text",
+        "text": "TARIAN",
+        "x": 210,
+        "y": 74,
+        "right": 417.734375,
+        "bottom": 118,
+        "fits": true
+      },
+      {
+        "element": "text",
+        "text": "VENTURES",
+        "x": 210,
+        "y": 128.39999389648438,
+        "right": 373.828125,
+        "bottom": 147.39999389648438,
+        "fits": true
+      }
+    ]
+  },
+  {
+    "source": "logos/tarian-lockup-stacked.svg",
+    "bytes": 8811,
+    "sha256": "e3bad1c855861fb2b487ade452f686e3ab687800773442128b31a809c0c4bd75",
+    "valid": true,
+    "width": "440",
+    "height": "360",
+    "viewBox": "0 0 440 360",
+    "colours": [
+      "#13564D",
+      "#101820",
+      "#35434A"
+    ],
+    "fonts": [
+      "Inter, \"Helvetica Neue\", Helvetica, Arial, sans-serif"
+    ],
+    "text": [
+      "TARIAN",
+      "VENTURES"
+    ],
+    "rasterCount": 0,
+    "scriptCount": 0,
+    "externalReferences": [],
+    "handlers": [],
+    "metadata": "Embedded C2PA manifest; retained unchanged, not independently authenticated",
+    "bounds": [
+      {
+        "element": "path",
+        "text": "",
+        "x": 162.20000076293945,
+        "y": 52.18000008583067,
+        "right": 277.80000400543213,
+        "bottom": 77.00000143051147,
+        "fits": true
+      },
+      {
+        "element": "path",
+        "text": "",
+        "x": 163.22000144004824,
+        "y": 85.1600003623962,
+        "right": 210.14000340461735,
+        "bottom": 177.63999906539902,
+        "fits": true
+      },
+      {
+        "element": "path",
+        "text": "",
+        "x": 229.86000136375424,
+        "y": 85.1600003623962,
+        "right": 276.7800065708161,
+        "bottom": 177.63999906539902,
+        "fits": true
+      },
+      {
+        "element": "text",
+        "text": "TARIAN",
+        "x": 106.2265625,
+        "y": 243,
+        "right": 347.7734375,
+        "bottom": 294,
+        "fits": true
+      },
+      {
+        "element": "text",
+        "text": "VENTURES",
+        "x": 131.75,
+        "y": 307,
+        "right": 322.25,
+        "bottom": 329,
+        "fits": true
+      }
+    ]
+  },
+  {
+    "source": "logos/tarian-lockup-stacked-reversed.svg",
+    "bytes": 8882,
+    "sha256": "4eccbd67a67e4898dd4c5b2a40a6805d7cba7daa272175e1bf0a5120c402e4f7",
+    "valid": true,
+    "width": "440",
+    "height": "360",
+    "viewBox": "0 0 440 360",
+    "colours": [
+      "#0C3B34",
+      "#FFFFFF",
+      "#C9D3D0"
+    ],
+    "fonts": [
+      "Inter, \"Helvetica Neue\", Helvetica, Arial, sans-serif"
+    ],
+    "text": [
+      "TARIAN",
+      "VENTURES"
+    ],
+    "rasterCount": 0,
+    "scriptCount": 0,
+    "externalReferences": [],
+    "handlers": [],
+    "metadata": "Embedded C2PA manifest; retained unchanged, not independently authenticated",
+    "bounds": [
+      {
+        "element": "rect",
+        "text": "",
+        "x": 0,
+        "y": 0,
+        "right": 440,
+        "bottom": 360,
+        "fits": true
+      },
+      {
+        "element": "path",
+        "text": "",
+        "x": 162.20000076293945,
+        "y": 52.18000008583067,
+        "right": 277.80000400543213,
+        "bottom": 77.00000143051147,
+        "fits": true
+      },
+      {
+        "element": "path",
+        "text": "",
+        "x": 163.22000144004824,
+        "y": 85.1600003623962,
+        "right": 210.14000340461735,
+        "bottom": 177.63999906539902,
+        "fits": true
+      },
+      {
+        "element": "path",
+        "text": "",
+        "x": 229.86000136375424,
+        "y": 85.1600003623962,
+        "right": 276.7800065708161,
+        "bottom": 177.63999906539902,
+        "fits": true
+      },
+      {
+        "element": "text",
+        "text": "TARIAN",
+        "x": 106.2265625,
+        "y": 243,
+        "right": 347.7734375,
+        "bottom": 294,
+        "fits": true
+      },
+      {
+        "element": "text",
+        "text": "VENTURES",
+        "x": 131.75,
+        "y": 307,
+        "right": 322.25,
+        "bottom": 329,
+        "fits": true
+      }
+    ]
+  },
+  {
+    "source": "logos/tarian-mark.svg",
+    "bytes": 8372,
+    "sha256": "942fd4597b4dd7dcecc41bae00d46e8435f19bed0026575490d55237c0d09741",
+    "valid": true,
+    "width": "100",
+    "height": "100",
+    "viewBox": "0 0 100 100",
+    "colours": [
+      "#13564D"
+    ],
+    "fonts": [],
+    "text": [],
+    "rasterCount": 0,
+    "scriptCount": 0,
+    "externalReferences": [],
+    "handlers": [],
+    "metadata": "Embedded C2PA manifest; retained unchanged, not independently authenticated",
+    "bounds": [
+      {
+        "element": "path",
+        "text": "",
+        "x": 16,
+        "y": 15.399999618530273,
+        "right": 84,
+        "bottom": 30,
+        "fits": true
+      },
+      {
+        "element": "path",
+        "text": "",
+        "x": 16.600000381469727,
+        "y": 34.79999923706055,
+        "right": 44.20000076293945,
+        "bottom": 89.19999694824219,
+        "fits": true
+      },
+      {
+        "element": "path",
+        "text": "",
+        "x": 55.79999923706055,
+        "y": 34.79999923706055,
+        "right": 83.4000015258789,
+        "bottom": 89.19999694824219,
+        "fits": true
+      }
+    ]
+  },
+  {
+    "source": "logos/tarian-mark-green.svg",
+    "bytes": 8372,
+    "sha256": "7bf46f6942852f22627d535052befe9f6eb1c14ddf8d424faf0dc19a6a2b0689",
+    "valid": true,
+    "width": "100",
+    "height": "100",
+    "viewBox": "0 0 100 100",
+    "colours": [
+      "#13564D"
+    ],
+    "fonts": [],
+    "text": [],
+    "rasterCount": 0,
+    "scriptCount": 0,
+    "externalReferences": [],
+    "handlers": [],
+    "metadata": "Embedded C2PA manifest; retained unchanged, not independently authenticated",
+    "bounds": [
+      {
+        "element": "path",
+        "text": "",
+        "x": 16,
+        "y": 15.399999618530273,
+        "right": 84,
+        "bottom": 30,
+        "fits": true
+      },
+      {
+        "element": "path",
+        "text": "",
+        "x": 16.600000381469727,
+        "y": 34.79999923706055,
+        "right": 44.20000076293945,
+        "bottom": 89.19999694824219,
+        "fits": true
+      },
+      {
+        "element": "path",
+        "text": "",
+        "x": 55.79999923706055,
+        "y": 34.79999923706055,
+        "right": 83.4000015258789,
+        "bottom": 89.19999694824219,
+        "fits": true
+      }
+    ]
+  },
+  {
+    "source": "logos/tarian-mark-midnight.svg",
+    "bytes": 8378,
+    "sha256": "a3de8ca2c17ceab403637c39afbc323b845c3d22dbeb7609dccc83ee12c17975",
+    "valid": true,
+    "width": "100",
+    "height": "100",
+    "viewBox": "0 0 100 100",
+    "colours": [
+      "#101820"
+    ],
+    "fonts": [],
+    "text": [],
+    "rasterCount": 0,
+    "scriptCount": 0,
+    "externalReferences": [],
+    "handlers": [],
+    "metadata": "Embedded C2PA manifest; retained unchanged, not independently authenticated",
+    "bounds": [
+      {
+        "element": "path",
+        "text": "",
+        "x": 16,
+        "y": 15.399999618530273,
+        "right": 84,
+        "bottom": 30,
+        "fits": true
+      },
+      {
+        "element": "path",
+        "text": "",
+        "x": 16.600000381469727,
+        "y": 34.79999923706055,
+        "right": 44.20000076293945,
+        "bottom": 89.19999694824219,
+        "fits": true
+      },
+      {
+        "element": "path",
+        "text": "",
+        "x": 55.79999923706055,
+        "y": 34.79999923706055,
+        "right": 83.4000015258789,
+        "bottom": 89.19999694824219,
+        "fits": true
+      }
+    ]
+  },
+  {
+    "source": "logos/tarian-mark-white.svg",
+    "bytes": 8372,
+    "sha256": "7b22a35ea3347a7fa2ce6522f03c695a70bc72baec0a6d9fb43c4ece998b05b9",
+    "valid": true,
+    "width": "100",
+    "height": "100",
+    "viewBox": "0 0 100 100",
+    "colours": [
+      "#FFFFFF"
+    ],
+    "fonts": [],
+    "text": [],
+    "rasterCount": 0,
+    "scriptCount": 0,
+    "externalReferences": [],
+    "handlers": [],
+    "metadata": "Embedded C2PA manifest; retained unchanged, not independently authenticated",
+    "bounds": [
+      {
+        "element": "path",
+        "text": "",
+        "x": 16,
+        "y": 15.399999618530273,
+        "right": 84,
+        "bottom": 30,
+        "fits": true
+      },
+      {
+        "element": "path",
+        "text": "",
+        "x": 16.600000381469727,
+        "y": 34.79999923706055,
+        "right": 44.20000076293945,
+        "bottom": 89.19999694824219,
+        "fits": true
+      },
+      {
+        "element": "path",
+        "text": "",
+        "x": 55.79999923706055,
+        "y": 34.79999923706055,
+        "right": 83.4000015258789,
+        "bottom": 89.19999694824219,
+        "fits": true
+      }
+    ]
+  },
+  {
+    "source": "icons/tarian-app-icon.svg",
+    "bytes": 8475,
+    "sha256": "8d72fec21aa0f502661d49d8d6a8009c225e4b1b356566ef90d9057a23c189e3",
+    "valid": true,
+    "width": "512",
+    "height": "512",
+    "viewBox": "0 0 512 512",
+    "colours": [
+      "#101820",
+      "#FFFFFF"
+    ],
+    "fonts": [],
+    "text": [],
+    "rasterCount": 0,
+    "scriptCount": 0,
+    "externalReferences": [],
+    "handlers": [],
+    "metadata": "Embedded C2PA manifest; retained unchanged, not independently authenticated",
+    "bounds": [
+      {
+        "element": "rect",
+        "text": "",
+        "x": 0,
+        "y": 0,
+        "right": 512,
+        "bottom": 512,
+        "fits": true
+      },
+      {
+        "element": "path",
+        "text": "",
+        "x": 147.20000076293945,
+        "y": 145.27999951362608,
+        "right": 364.80000400543213,
+        "bottom": 192.00000143051147,
+        "fits": true
+      },
+      {
+        "element": "path",
+        "text": "",
+        "x": 149.12000201225283,
+        "y": 207.35999921798702,
+        "right": 237.44000454902653,
+        "bottom": 381.4399944877623,
+        "fits": true
+      },
+      {
+        "element": "path",
+        "text": "",
+        "x": 274.56000021934506,
+        "y": 207.35999921798702,
+        "right": 362.8800088596345,
+        "bottom": 381.4399944877623,
+        "fits": true
+      }
+    ]
+  },
+  {
+    "source": "icons/tarian-favicon.svg",
+    "bytes": 8465,
+    "sha256": "3ac2902579b16997737e508ae710f2244cb3bc3693d13d0fa301be4acfc455e6",
+    "valid": true,
+    "width": "64",
+    "height": "64",
+    "viewBox": "0 0 64 64",
+    "colours": [
+      "#101820",
+      "#FFFFFF"
+    ],
+    "fonts": [],
+    "text": [],
+    "rasterCount": 0,
+    "scriptCount": 0,
+    "externalReferences": [],
+    "handlers": [],
+    "metadata": "Embedded C2PA manifest; retained unchanged, not independently authenticated",
+    "bounds": [
+      {
+        "element": "rect",
+        "text": "",
+        "x": 0,
+        "y": 0,
+        "right": 64,
+        "bottom": 64,
+        "fits": true
+      },
+      {
+        "element": "path",
+        "text": "",
+        "x": 14.319999694824219,
+        "y": 13.00799950790406,
+        "right": 49.67999839782715,
+        "bottom": 20.59999942779541,
+        "fits": true
+      },
+      {
+        "element": "path",
+        "text": "",
+        "x": 14.631999881744377,
+        "y": 23.095998939514175,
+        "right": 28.983999553680405,
+        "bottom": 51.383996711731015,
+        "fits": true
+      },
+      {
+        "element": "path",
+        "text": "",
+        "x": 35.01599853897096,
+        "y": 23.095998939514175,
+        "right": 49.36799920272824,
+        "bottom": 51.383996711731015,
+        "fits": true
+      }
+    ]
+  }
+]

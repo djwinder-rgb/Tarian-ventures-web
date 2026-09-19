@@ -1,0 +1,95 @@
+{
+  "palette": {
+    "forest": "#13564D",
+    "white": "#FFFFFF",
+    "tint": "#F3F7F6",
+    "ink": "#12262B",
+    "rule": "#D0DDDB"
+  },
+  "results": [
+    {
+      "role": "Forest on White: headings, links, navigation, focus, rules",
+      "foreground": "#13564D",
+      "background": "#FFFFFF",
+      "ratio": 8.52,
+      "meaningful": true
+    },
+    {
+      "role": "White on Forest: inverse text, CTA, inverse focus",
+      "foreground": "#FFFFFF",
+      "background": "#13564D",
+      "ratio": 8.52,
+      "meaningful": true
+    },
+    {
+      "role": "Deep Ink on White: body and supporting text",
+      "foreground": "#12262B",
+      "background": "#FFFFFF",
+      "ratio": 15.7,
+      "meaningful": true
+    },
+    {
+      "role": "Deep Ink on Tint: contact/about/legal text",
+      "foreground": "#12262B",
+      "background": "#F3F7F6",
+      "ratio": 14.54,
+      "meaningful": true
+    },
+    {
+      "role": "Forest on Tint: headings, links, focus",
+      "foreground": "#13564D",
+      "background": "#F3F7F6",
+      "ratio": 7.89,
+      "meaningful": true
+    },
+    {
+      "role": "Tint on Forest: footer secondary text",
+      "foreground": "#F3F7F6",
+      "background": "#13564D",
+      "ratio": 7.89,
+      "meaningful": true
+    },
+    {
+      "role": "White on Forest / Forest on White: CTA default and hover",
+      "foreground": "#13564D",
+      "background": "#FFFFFF",
+      "ratio": 8.52,
+      "meaningful": true
+    },
+    {
+      "role": "Supplied horizontal logo Midnight on White",
+      "foreground": "#101820",
+      "background": "#FFFFFF",
+      "ratio": 17.89,
+      "meaningful": true
+    },
+    {
+      "role": "Supplied horizontal logo Slate on White",
+      "foreground": "#35434A",
+      "background": "#FFFFFF",
+      "ratio": 10.23,
+      "meaningful": true
+    },
+    {
+      "role": "Supplied favicon/app-icon White on Midnight",
+      "foreground": "#FFFFFF",
+      "background": "#101820",
+      "ratio": 17.89,
+      "meaningful": true
+    },
+    {
+      "role": "Structural rule on White: decorative separator only",
+      "foreground": "#D0DDDB",
+      "background": "#FFFFFF",
+      "ratio": 1.4,
+      "meaningful": false
+    },
+    {
+      "role": "Structural rule on Tint: decorative separator only",
+      "foreground": "#D0DDDB",
+      "background": "#F3F7F6",
+      "ratio": 1.29,
+      "meaningful": false
+    }
+  ]
+}
