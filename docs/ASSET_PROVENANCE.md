@@ -15,13 +15,17 @@ This is the canonical V1 implementation register. The original supplied register
 
 Origin and rights: created specifically for Tarian Ventures; Tarian Ventures project assets, as recorded in the supplied register. SVGs are deterministic vector recreations of the approved geometric shield direction. PNGs derive from that geometry. No separate third-party visual asset licence is asserted or required by the supplied pack.
 
-The source files are preserved byte-for-byte. Matching public copies live under `public/brand/logos/` and `public/brand/icons/`, resolving the specification's URL-path requirement. An automated comparison checks the copies against the sources.
+The original supplied files remain available in repository history. For the approved V1 direction, the shield and its public copy now use the simplified Concept 1 silhouette supplied in the reviewed reference image: a single green shield, Midnight cap and white T treatment. Matching public copies live under `public/brand/logos/` and `public/brand/icons/`, resolving the specification's URL-path requirement.
 
 ## Horizontal web wordmarks
 
 `public/brand/logos/tarian-ventures-horizontal-system.svg` and `tarian-ventures-horizontal-reversed-system.svg` derive from the corresponding project-owned source SVGs. Their only change is replacing `Inter, Arial, sans-serif` with `Arial, sans-serif`, explicitly selecting the permitted fallback instead of relying on locally installed Inter. Shapes, colours, coordinates, viewBoxes and lettering are unchanged. The default header/footer use these derivatives.
 
 No glyph outlines or font binaries were introduced. Minor platform font-rendering differences remain possible; the wording is not claimed to be outlined or universally pixel-identical. Horizontal text bounds and rendered appearance are checked. The stacked source is retained but not used by the site. Chromium measurement found its TARIAN text spans x = -4.52 to 104.52 in a 100-unit viewBox, and visual inspection confirmed clipping. No stacked-logo correction was needed because V1 uses the horizontal versions. The source remains unchanged.
+
+## Reviewed shield direction
+
+The user-approved reference image identifies Concept 1, “The Shield (Primary)”, as the preferred mark. The simplified shield is now the primary standalone mark and is used wherever the site displays a shield. `public/brand/logos/tarian-shield-reversed.svg` is the same silhouette with a light cap and side planes for legibility on the Midnight footer surface. These are code-native project assets; no third-party image, gradient or generated runtime asset is used.
 
 ## Social card
 

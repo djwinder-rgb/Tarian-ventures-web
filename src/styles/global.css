@@ -34,8 +34,10 @@ strong { font-weight: 600; }
 .skip-link:focus { top: 1rem; }
 .site-header { border-bottom: 1px solid var(--rule); }
 .header-inner { display: flex; align-items: center; justify-content: space-between; gap: 2rem; min-height: 7.5rem; }
-.brand { display: block; flex-shrink: 0; width: 15.75rem; padding: .3rem 0; }
-.brand img { width: 100%; height: auto; }
+.brand { display: flex; align-items: center; gap: .75rem; flex-shrink: 0; padding: .3rem 0; color: var(--midnight); text-decoration: none; }
+.brand img { width: 3.2rem; height: 3.2rem; }
+.brand-words { font-size: 1.05rem; letter-spacing: .22em; line-height: 1.2; font-weight: 500; }
+.brand-words small { display: block; font-size: .5rem; letter-spacing: .33em; margin-top: .35rem; }
 .site-header nav ul { display: flex; gap: 1.7rem; list-style: none; padding: 0; margin: 0; }
 .site-header nav a { display: flex; min-height: 44px; align-items: center; color: var(--midnight); text-decoration: none; font-size: .875rem; border-bottom: 2px solid transparent; }
 .site-header nav a:hover, .site-header nav a[aria-current="page"] { border-bottom-color: var(--green); }
@@ -91,6 +93,7 @@ strong { font-weight: 600; }
 .footer-top { display: flex; justify-content: space-between; align-items: center; gap: 2rem; padding-bottom: 2.5rem; }
 .footer-top nav { display: flex; gap: 2rem; }
 .site-footer a { color: var(--stone); }
+.site-footer .brand-words { color: var(--stone); }
 .footer-top nav a { display: flex; align-items: center; min-height: 44px; }
 .footer-bottom { border-top: 1px solid #596268; padding-top: 2rem; display: flex; justify-content: space-between; gap: 2rem; }
 .company-information { max-width: 36rem; }
@@ -108,7 +111,7 @@ strong { font-weight: 600; }
 @media (max-width: 48rem) {
   .shell { width: calc(100% - 2.5rem); }
   .header-inner { flex-wrap: wrap; gap: 0 1rem; min-height: 6rem; padding-block: .75rem; }
-  .brand { width: 12.5rem; }
+  .brand img { width: 2.8rem; height: 2.8rem; }
   .menu-toggle:not([hidden]) { display: flex; }
   .site-header nav { width: 100%; }
   .site-header nav ul { flex-wrap: wrap; column-gap: 1.5rem; padding-block: .5rem; }
@@ -128,7 +131,7 @@ strong { font-weight: 600; }
   .company-information dt { color: var(--stone); }
 }
 @media (max-width: 23rem) {
-  .brand { width: 10.5rem; }
+  .brand-words { font-size: .9rem; }
   .menu-toggle { padding-inline: .6rem; gap: .5rem; }
 }
 @media (prefers-reduced-motion: reduce) {
