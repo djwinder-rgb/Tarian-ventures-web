@@ -21,7 +21,7 @@ The source files are preserved byte-for-byte. Matching public copies live under 
 
 `public/brand/logos/tarian-ventures-horizontal-system.svg` and `tarian-ventures-horizontal-reversed-system.svg` derive from the corresponding project-owned source SVGs. Their only change is replacing `Inter, Arial, sans-serif` with `Arial, sans-serif`, explicitly selecting the permitted fallback instead of relying on locally installed Inter. Shapes, colours, coordinates, viewBoxes and lettering are unchanged. The default header/footer use these derivatives.
 
-No glyph outlines or font binaries were introduced. Minor platform font-rendering differences remain possible; the wording is not claimed to be outlined or universally pixel-identical. Horizontal text bounds and rendered appearance are checked. The stacked source is retained but not used by the site; any clipping in that source does not justify silently changing the approved artwork.
+No glyph outlines or font binaries were introduced. Minor platform font-rendering differences remain possible; the wording is not claimed to be outlined or universally pixel-identical. Horizontal text bounds and rendered appearance are checked. The stacked source is retained but not used by the site. Chromium measurement found its TARIAN text spans x = -4.52 to 104.52 in a 100-unit viewBox, and visual inspection confirmed clipping. No stacked-logo correction was needed because V1 uses the horizontal versions. The source remains unchanged.
 
 ## Social card
 

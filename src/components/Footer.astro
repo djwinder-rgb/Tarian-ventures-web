@@ -1,0 +1,24 @@
+---
+import { site } from '../config/site';
+const fields = [
+  ['Registered company name', site.company.registeredName],
+  ['Company number', site.company.number],
+  ['Registered office', site.company.registeredOffice],
+  ['Jurisdiction', site.company.jurisdiction],
+];
+---
+<footer class="site-footer">
+  <div class="shell">
+    <div class="footer-top">
+      <a class="brand" href="/" aria-label="Tarian Ventures — home"><img src="/brand/logos/tarian-ventures-horizontal-reversed-system.svg" alt="Tarian Ventures" width="360" height="100" /></a>
+      <nav aria-label="Legal"><a href="/privacy/">Privacy</a><a href="/cookies/">Cookies</a></nav>
+    </div>
+    <div class="footer-bottom">
+      <p>Tarian Ventures</p>
+      <div class="company-information">
+        {!site.publicationReviewed && <p class="review-label">Review build · Company and legal information awaiting verification</p>}
+        <dl>{fields.map(([label, value]) => <div><dt>{label}</dt><dd>{value ?? 'Not yet verified'}</dd></div>)}</dl>
+      </div>
+    </div>
+  </div>
+</footer>
