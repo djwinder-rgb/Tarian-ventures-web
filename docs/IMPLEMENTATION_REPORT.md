@@ -199,3 +199,19 @@ Final CSS palette: Forest `#13564D`, White `#FFFFFF`, pale tint `#F3F7F6`, Deep 
 `review/brand-refinement/VISUAL_REVIEW.md` records exact roles/contrasts, per-context artwork, responsive decisions, compromises and all 13 production screenshots. Additional SVG inspection gallery/JSON, contrast JSON and capture results make the checks reproducible. Full-page and viewport-only hero captures are included; page content was not edited for screenshots.
 
 Human review should decide whether the desktop shield contour earns its space, whether mark-only mobile identity is sufficient and whether Forest usage conveys a venture development company. Live wordmark text can vary by operating system. Tall mobile legal-review footers remain intentional. Safari/Firefox, assistive-technology/device checks and existing company/domain/legal publication prerequisites remain outstanding. Technical passing results do not substitute for visual approval.
+
+## Final Visual Refinement — 19 September 2026
+
+Human visual review: **PASS WITH MINOR REFINEMENT**. White + Forest, overall design and supplied logo geometry are approved. This pass implements only the two authorised presentation adjustments.
+
+Safety gate confirmed the exact repository root, fetched origin, and verified `feature/website-v1` at reviewed SHA `80bade0074116a84c9c38feeaa710696f367a7d3`; origin/main remained `9f7a618219034174266ad165b90e36f68e221df4`. An untracked reviewed screenshot ZIP initially stopped the gate. The user then authorised excluding it. It remains untouched and locally ignored through `.git/info/exclude`; no shared ignore rule or archive was committed. No other unexpected changes existed.
+
+The decorative hero contour now uses 80% of its original column width and 50% opacity, centred in the same column. Paths, stroke definitions and master artwork are unchanged. Compact headers pair the supplied 64px green shield with 16px system-font TARIAN lettering, retaining the full accessible home-link name. Desktop identity and menu logic are unchanged.
+
+`docs/WEBSITE_BRAND.md` formalises Forest `#13564D`, White `#FFFFFF`, Pale Forest `#F3F7F6`, Deep Ink `#12262B` and Decorative Rule `#D0DDDB` as authoritative. README/provenance describe current usage; historical brand guidance is explicitly marked superseded for website palette/presentation. Historical review evidence remains intact.
+
+Complete validation passed: production build, all 14 Playwright tests, axe scans, keyboard/Escape/focus, JavaScript-disabled navigation, reflow, text enlargement, reduced motion, approved copy, links/assets, metadata, CSP and byte-identical source/public artwork. Final diagnostics cover 26 files with zero errors, warnings or hints. Contrast recheck passed: mobile brand/focus 8.52:1, menu boundary 15.70:1; decorative opacity carries no information. Zero unexpected external runtime requests, application cookies or local/session storage entries observed.
+
+Targeted header/hero checks passed at 1440, 1024, 768, 390, 375 and 320px. No overflow, compact header collision or observed layout shift; Menu targets meet 44px and navigation/focus behaviour remains intact. Six production screenshots and measured results are in `review/final-refinement/`; `FINAL_REFINEMENT_REVIEW.md` records the comparison and remaining human judgments. Final `git diff --check` passed. Only a harmless test-runner NO_COLOR/FORCE_COLOR environment warning appeared; no site errors were reported.
+
+Verdict: **READY FOR FINAL HUMAN REVIEW**. Existing cross-browser/device and publication prerequisites remain. No merge, push, deployment or history rewrite performed.

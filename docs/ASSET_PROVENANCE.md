@@ -8,7 +8,7 @@ The user supplied and authorised these new SVGs, found under `logos/` and `icons
 
 - `logos/tarian-lockup-horizontal.svg` — desktop header.
 - `logos/tarian-lockup-stacked.svg` and `logos/tarian-lockup-stacked-reversed.svg` — retained, not placed in pages.
-- `logos/tarian-mark-green.svg` — compact header, About and source paths for the social card.
+- `logos/tarian-mark-green.svg` — compact header beside system-font TARIAN text, About and source paths for the social card. This responsive composition does not alter the SVG.
 - `logos/tarian-mark-white.svg` — footer on Forest.
 - Companion kit: `logos/tarian-lockup-horizontal-reversed.svg`, `logos/tarian-mark.svg`, `logos/tarian-mark-midnight.svg`, `icons/tarian-app-icon.svg`, `icons/tarian-favicon.svg` and `tarian-logo-kit/README.txt`.
 
@@ -44,4 +44,4 @@ Page text uses `Arial, sans-serif`. SVG text retains its supplied font stack. No
 
 PNG screenshots under `review/brand-refinement/` are local Chrome captures of the production build; `logo-inspection.png` renders supplied vectors for technical review. These are not website runtime assets.
 
-No photography, third-party icon/illustration library or external visual asset is used. Future additions require recorded origin, rights and intended use. Current palette, contrast and compromises are in `review/brand-refinement/VISUAL_REVIEW.md`.
+No photography, third-party icon/illustration library or external visual asset is used. Future additions require recorded origin, rights and intended use. Current authority is `docs/WEBSITE_BRAND.md`; final evidence is in `review/final-refinement/FINAL_REFINEMENT_REVIEW.md`. The earlier brand-refinement pack remains historical review evidence. Final hero changes affect CSS presentation only; no source artwork or provenance metadata changed.

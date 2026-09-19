@@ -1,5 +1,7 @@
 # Tarian Ventures Brand System v1.0
 
+> Historical V1 source guidance. The website palette and responsive logo usage below were superseded by the human-approved White + Forest system on 19 September 2026. Current website authority: [Website brand](../docs/WEBSITE_BRAND.md). Preserve this document as historical context, not current colour-token instructions.
+
 ## Positioning
 **Building businesses around problems worth solving.**
 
