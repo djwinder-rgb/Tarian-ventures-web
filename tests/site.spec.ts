@@ -4,6 +4,18 @@ import { readFile } from 'node:fs/promises';
 import { site, publicRoutes } from '../src/config/site';
 const routes = [...publicRoutes, '/not-a-page/'];
 
+test('Azure hosting preserves security, review indexing and genuine 404 responses', async () => {
+  const azure = JSON.parse(await readFile('dist/staticwebapp.config.json', 'utf8'));
+  const headers = await readFile('dist/_headers', 'utf8');
+  for (const line of headers.split('\n\n')[0].split('\n').slice(1).filter(line => line.trim())) {
+    const colon = line.indexOf(':');
+    expect(azure.globalHeaders[line.slice(0, colon).trim()]).toBe(line.slice(colon + 1).trim());
+  }
+  expect(azure.responseOverrides['404']).toEqual({ rewrite: '/404.html' });
+  expect(azure.navigationFallback).toBeUndefined();
+  expect(azure.routes).toEqual([{ route: '/_astro/*', headers: { 'Cache-Control': 'public, max-age=31536000, immutable' } }]);
+});
+
 for (const route of routes) {
   test(`${route}: direct route, metadata, accessibility, privacy and reflow`, async ({ page, context }) => {
     const external: string[] = [];

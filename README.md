@@ -75,6 +75,8 @@ Noindex and robots directives are indexing controls, not access control. Do not 
 
 ## Cloudflare Pages configuration (prepared, not deployed)
 
+**Superseded hosting target, 20 September 2026:** the user selected Azure Static Web Apps, following AltGRC's hosting model. See [Azure hosting preparation](docs/AZURE_HOSTING.md). Cloudflare remains the registrar/DNS provider. The following Pages instructions are historical; the build now also emits Azure configuration.
+
 - Framework: Astro (static).
 - Build command: `npm run build` after installation from `package-lock.json` using `npm ci`.
 - Output directory: `dist`.
