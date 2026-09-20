@@ -65,16 +65,16 @@ test('all local links and asset references resolve; titles and descriptions are 
     }
   }
   for (const ref of references) expect((await request.get(ref)).status(), ref).toBe(200);
-  expect(titles.size).toBe(7);
-  expect(descriptions.size).toBe(7);
+  expect(titles.size).toBe(publicRoutes.length);
+  expect(descriptions.size).toBe(publicRoutes.length);
   const robots = await (await request.get('/robots.txt')).text();
   const sitemap = await (await request.get('/sitemap.xml')).text();
   if (!site.publicationReviewed) { expect(robots).toContain('Disallow: /'); expect(sitemap).not.toContain('<loc>'); }
 });
 
-test('approved copy is preserved verbatim across the five primary pages', async ({ page }) => {
+test('unchanged Approach copy is preserved verbatim', async ({ page }) => {
   const spec = await readFile('guidance/CODEX_WEBSITE_IMPLEMENTATION_SPEC.md', 'utf8');
-  for (const [number, route] of [[5, '/'], [6, '/ventures/'], [7, '/approach/'], [8, '/about/'], [9, '/contact/']] as const) {
+  for (const [number, route] of [[7, '/approach/']] as const) {
     const section = spec.split(`## ${number}. `)[1].split(`## ${number + 1}. `)[0].split('\n').slice(1);
     await page.goto(route);
     const text = (await page.locator('main').evaluate(main => {
@@ -90,6 +90,35 @@ test('approved copy is preserved verbatim across the five primary pages', async 
       } else expect(text).toContain(line);
     }
   }
+});
+
+test('outreach copy reflects the user-confirmed stage and directs relevant enquiries', async ({ page }) => {
+  await page.goto('/');
+  await expect(page.locator('main')).toContainText('researching, testing and piloting ideas');
+  await expect(page.locator('main')).toContainText('It has not yet secured its first customer');
+  await expect(page.locator('main')).toContainText('separate legal entity');
+  await page.getByRole('link', { name: 'Explore Tarian Compute' }).click();
+  await expect(page).toHaveURL(/\/compute\/$/);
+  await expect(page.locator('main')).toContainText('Research and early conversations');
+  await page.getByRole('link', { name: 'Discuss Tarian Compute' }).click();
+  await expect(page.locator('#compute a')).toHaveAttribute('href', 'mailto:ventures@tarianventures.co.uk?subject=Tarian%20Compute%20conversation');
+  await expect(page.locator('#altgrc a')).toHaveAttribute('href', 'mailto:ventures@tarianventures.co.uk?subject=AltGRC%20conversation');
+  await page.goto('/ventures/');
+  await expect(page.locator('#altgrc')).toContainText('Further development and readiness work are required before deployment for a customer.');
+});
+
+test('original network motion can be paused and respects changed motion preferences', async ({ page }) => {
+  await page.emulateMedia({ reducedMotion: 'no-preference' });
+  await page.goto('/');
+  const flow = page.locator('.network-flow');
+  await expect(flow).toHaveCSS('animation-play-state', 'running');
+  await page.getByRole('button', { name: 'Pause animation' }).click();
+  await expect(flow).toHaveCSS('animation-play-state', 'paused');
+  await page.getByRole('button', { name: 'Play animation' }).click();
+  await expect(flow).toHaveCSS('animation-play-state', 'running');
+  await page.emulateMedia({ reducedMotion: 'reduce' });
+  await expect(flow).toHaveCSS('animation-name', 'none');
+  await expect(page.locator('.motion-toggle')).toBeHidden();
 });
 
 test('keyboard menu, Escape, focus and reduced motion', async ({ page }) => {
@@ -121,6 +150,8 @@ test('navigation and approved content work without JavaScript', async ({ browser
   const context = await browser.newContext({ javaScriptEnabled: false, viewport: { width: 320, height: 800 } });
   const page = await context.newPage();
   await page.goto('http://127.0.0.1:4321/');
+  await expect(page.locator('.network-flow')).toHaveCSS('animation-play-state', 'paused');
+  await expect(page.locator('.motion-toggle')).toBeHidden();
   await expect(page.getByRole('button', { name: 'Menu' })).toBeHidden();
   await page.getByRole('navigation', { name: 'Main navigation' }).getByRole('link', { name: 'Ventures' }).click();
   await expect(page.getByRole('heading', { name: 'Tarian Compute' })).toBeVisible();

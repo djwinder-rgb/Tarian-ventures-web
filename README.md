@@ -95,6 +95,8 @@ Cloudflare routing and environment setup must still be verified on an authorised
 
 ## Branding and assets
 
+**Current outreach review, 20 September 2026:** the user authorised clearer umbrella/venture-stage positioning, a dedicated `/compute/` route, original network motion and Charcoal `#20282B` typography with selective Forest accents. See `review/venture-outreach/REVIEW.md` and `docs/VIDEO_DIRECTION.md`. Earlier brand reviews are historical where they differ. Run `node scripts/review-outreach.mjs` against the local production server to capture the new pack.
+
 The human-approved website authority is [docs/WEBSITE_BRAND.md](docs/WEBSITE_BRAND.md): Forest `#13564D`, White `#FFFFFF`, Pale Forest `#F3F7F6`, Deep Ink `#12262B`, Decorative Rule `#D0DDDB`. Earlier palettes are historical only. Compact headers now pair the supplied mark with readable TARIAN text. Final review evidence is in `review/final-refinement/FINAL_REFINEMENT_REVIEW.md`; regenerate with `node scripts/review-final.mjs` against the local production server.
 
 The latest human-supplied kit is authoritative and copied unchanged into `public/brand/`. The horizontal lockup serves desktop headers; the green mark serves compact headers and About, and the white mark serves the Forest footer. SVG live text retains its supplied font stack. Page text uses Arial/system fallback, with no bundled fonts or font-service requests. See `review/brand-refinement/VISUAL_REVIEW.md` for current palette and evidence; historical decisions remain in the dated implementation report.

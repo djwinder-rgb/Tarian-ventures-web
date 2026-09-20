@@ -215,3 +215,17 @@ Complete validation passed: production build, all 14 Playwright tests, axe scans
 Targeted header/hero checks passed at 1440, 1024, 768, 390, 375 and 320px. No overflow, compact header collision or observed layout shift; Menu targets meet 44px and navigation/focus behaviour remains intact. Six production screenshots and measured results are in `review/final-refinement/`; `FINAL_REFINEMENT_REVIEW.md` records the comparison and remaining human judgments. Final `git diff --check` passed. Only a harmless test-runner NO_COLOR/FORCE_COLOR environment warning appeared; no site errors were reported.
 
 Verdict: **READY FOR FINAL HUMAN REVIEW**. Existing cross-browser/device and publication prerequisites remain. No merge, push, deployment or history rewrite performed.
+
+## Venture outreach and original motion — 20 September 2026
+
+The user clarified that Tarian is an umbrella for testing/piloting ideas before spinning viable work into separate legal entities, and is not itself seeking investment. Current priority is credible outreach for Tarian Compute. The user authorised the seven resulting content/design recommendations and original animation development while investigating video-generation services.
+
+Work started from merged Azure-ready main (`8e07e3066de49307dee4df0fac040603def8b40b`) on `codex/venture-outreach`, with a clean working tree. AltGRC local project documentation was inspected read-only. Engineering deployment labels were not treated as evidence of commercial traction; public wording follows the user's explicit confirmation: demonstration stage, no first customer, further work before customer deployment. No private demo material or customer references were published.
+
+Home now explains the umbrella purpose, brings named work forward and leads to a new `/compute/` page. Compute describes areas of investigation and the expertise sought. About makes the founder and relevant experience clearer. Contact offers subject-specific Compute, AltGRC and general enquiry routes. No email was sent. White/Charcoal `#20282B` with Forest accents replaces uniformly Forest typography. Master logos, legal placeholders and publication controls are retained.
+
+Original SVG connected-plane animation replaces the old decorative shield. An 18-second signal loop has pause/play, reduced-motion preference handling and static no-JavaScript behaviour. No library, tracking, video service or stock asset added. `docs/VIDEO_DIRECTION.md` supplies original-network and Welsh-waterfront generation briefs; actual film production remains pending the user's service exploration. No genuine portrait or approved product screenshot was available, so neither was fabricated.
+
+Production build and all 18 Playwright tests passed. Diagnostics reported zero errors, warnings or hints. Tests include nine route cases, axe, keyboard/no-JavaScript, responsive widths, enlarged text, motion controls, contact journeys, truthful stage assertions, original/public SVG identity and Azure security configuration parity. Approach copy remains checked against the historical specification; the other pages' old-copy expectations were replaced to reflect explicit revision authorisation. No external runtime requests, cookies, storage or page errors observed. White/Charcoal contrast is 15:1; Forest/White 8.52:1. Detailed contrast and screenshots are in `review/venture-outreach/`.
+
+The branch is for visual/content review; the deployed Azure site and custom-domain state are unchanged by this pass. Existing legal/company/domain publication prerequisites remain.

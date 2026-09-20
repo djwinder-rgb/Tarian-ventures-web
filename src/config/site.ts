@@ -34,7 +34,7 @@ export const navigation = [
   { href: '/about/', label: 'About' },
   { href: '/contact/', label: 'Contact' },
 ];
-export const publicRoutes = [...navigation.map(({ href }) => href), '/privacy/', '/cookies/'];
+export const publicRoutes = [...navigation.map(({ href }) => href), '/compute/', '/privacy/', '/cookies/'];
 export const organizationJson = JSON.stringify({
   '@context': 'https://schema.org',
   '@type': 'Organization',

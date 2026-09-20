@@ -1,4 +1,6 @@
-import { readFile, writeFile } from 'node:fs/promises';
+import { readFile, writeFile, mkdir } from 'node:fs/promises';
+const output = process.argv[2] ?? 'review/brand-refinement';
+await mkdir(output, { recursive: true });
 const css = await readFile('src/styles/global.css', 'utf8');
 const palette = Object.fromEntries([...css.matchAll(/--([a-z]+): (#[a-f0-9]{6});/g)].map(([,name,hex])=>[name,hex.toUpperCase()]));
 const luminance = hex => {
@@ -10,6 +12,8 @@ const combinations = [
   ['Forest on White: headings, links, navigation, focus, rules',palette.forest,palette.white,true],
   ['White on Forest: inverse text, CTA, inverse focus',palette.white,palette.forest,true],
   ['Deep Ink on White: body and supporting text',palette.ink,palette.white,true],
+  ['White on Charcoal: hero copy, links, focus and CTA hover',palette.white,palette.ink,true],
+  ['Rule on Charcoal: motion-control border',palette.rule,palette.ink,true],
   ['Deep Ink on Tint: contact/about/legal text',palette.ink,palette.tint,true],
   ['Forest on Tint: headings, links, focus',palette.forest,palette.tint,true],
   ['Tint on Forest: footer secondary text',palette.tint,palette.forest,true],
@@ -22,5 +26,5 @@ const combinations = [
 ];
 const results=combinations.map(([role,foreground,background,meaningful])=>({role,foreground,background,ratio:Number(ratio(foreground,background).toFixed(2)),meaningful}));
 if(results.some(item=>item.meaningful&&item.ratio<4.5))throw new Error('Meaningful colour combination below AA normal-text contrast');
-await writeFile('review/brand-refinement/contrast.json',JSON.stringify({palette,results},null,2)+'\n');
+await writeFile(`${output}/contrast.json`,JSON.stringify({palette,results},null,2)+'\n');
 console.log(results);

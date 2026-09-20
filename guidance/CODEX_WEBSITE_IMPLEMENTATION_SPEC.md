@@ -1,5 +1,7 @@
 # Tarian Ventures Website V1 — Codex Implementation Specification
 
+> Historical implementation baseline. On 20 September 2026 the user authorised revised Home, Ventures, About and Contact copy plus a dedicated Compute page, reflecting the early-stage umbrella model and current venture readiness. See `review/venture-outreach/REVIEW.md`. Approach copy remains unchanged. Do not use the superseded copy below to reintroduce commercial-readiness implications.
+
 ## 1. Objective
 Build a professional, fast, understated public website for Tarian Ventures that establishes credibility when prospective partners, public bodies, customers, suppliers or investors investigate the company.
 
