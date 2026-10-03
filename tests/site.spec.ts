@@ -3,6 +3,7 @@ import AxeBuilder from '@axe-core/playwright';
 import { readFile } from 'node:fs/promises';
 import { site, publicRoutes } from '../src/config/site';
 const routes = [...publicRoutes, '/not-a-page/'];
+const testOrigin = new URL(process.env.TARIAN_TEST_BASE_URL ?? 'http://127.0.0.1:4321').origin;
 
 test('Azure hosting preserves security, review indexing and genuine 404 responses', async () => {
   const azure = JSON.parse(await readFile('dist/staticwebapp.config.json', 'utf8'));
@@ -20,7 +21,7 @@ for (const route of routes) {
   test(`${route}: direct route, metadata, accessibility, privacy and reflow`, async ({ page, context }) => {
     const external: string[] = [];
     const errors: string[] = [];
-    page.on('request', request => { if (new URL(request.url()).origin !== 'http://127.0.0.1:4321') external.push(request.url()); });
+    page.on('request', request => { if (new URL(request.url()).origin !== testOrigin) external.push(request.url()); });
     page.on('pageerror', error => errors.push(error.message));
     page.on('console', message => { if (message.type() === 'error' && !message.text().includes('404')) errors.push(message.text()); });
     const response = await page.goto(route);
@@ -61,6 +62,8 @@ test('all local links and asset references resolve; titles and descriptions are 
     for (const ref of await page.locator('[href], [src], [srcset], meta[property="og:image"]').evaluateAll(nodes => nodes.flatMap(node => [node.getAttribute('href'), node.getAttribute('src'), node.getAttribute('srcset'), node.getAttribute('content')].filter((value): value is string => !!value)))) {
       if (ref.startsWith('#')) await expect(page.locator(ref)).toHaveCount(1);
       else if (ref.startsWith('/')) references.add(ref);
+      else if (site.productionOrigin && new URL(ref, site.productionOrigin).origin === site.productionOrigin) references.add(new URL(ref).pathname);
+      else if (['https://ico.org.uk/make-a-complaint/', 'https://businesswales.gov.wales/news-and-blog/second-ai-growth-zone-wales-announced'].includes(ref)) continue;
       else expect(ref).toMatch(/^mailto:/);
     }
   }
@@ -72,39 +75,26 @@ test('all local links and asset references resolve; titles and descriptions are 
   if (!site.publicationReviewed) { expect(robots).toContain('Disallow: /'); expect(sitemap).not.toContain('<loc>'); }
 });
 
-test('unchanged Approach copy is preserved verbatim', async ({ page }) => {
-  const spec = await readFile('guidance/CODEX_WEBSITE_IMPLEMENTATION_SPEC.md', 'utf8');
-  for (const [number, route] of [[7, '/approach/']] as const) {
-    const section = spec.split(`## ${number}. `)[1].split(`## ${number + 1}. `)[0].split('\n').slice(1);
-    await page.goto(route);
-    const text = (await page.locator('main').evaluate(main => {
-      const copy = main.cloneNode(true) as HTMLElement;
-      copy.querySelectorAll('br').forEach(br => br.replaceWith(' '));
-      return copy.textContent ?? '';
-    })).replace(/\s+/g, ' ');
-    for (let line of section) {
-      line = line.trim().replace(/^#+\s*/, '').replaceAll('**', '').replace(/^(CTA|Section|Status treatment):\s*/, '');
-      if (!line || ['Hero:', 'Display:'].includes(line) || line.startsWith('Do not add')) continue;
-      if (line.includes(' — ')) {
-        for (const part of line.split(' — ')) expect(text).toContain(part);
-      } else expect(text).toContain(line);
-    }
-  }
+test('Approach retains the five evidence-led stages', async ({ page }) => {
+  await page.goto('/approach/');
+  await expect(page.locator('.approach-list h2')).toHaveText(['Discover', 'Validate', 'Experiment', 'Build', 'Scale or stop']);
+  await expect(page.locator('main')).toContainText('Ideas should earn more time and money as the evidence builds.');
 });
 
 test('outreach copy reflects the user-confirmed stage and directs relevant enquiries', async ({ page }) => {
   await page.goto('/');
-  await expect(page.locator('main')).toContainText('researching, testing and piloting ideas');
-  await expect(page.locator('main')).toContainText('It has not yet secured its first customer');
-  await expect(page.locator('main')).toContainText('separate legal entity');
+  await expect(page.locator('main')).toContainText('A home for exploring new business ideas');
+  await expect(page.locator('main')).toContainText('In development');
+  await expect(page.locator('main h1')).toHaveText('Building businesses around problems worth solving.');
+  await expect(page.locator('header nav').getByRole('link', { name: 'Compute', exact: true })).toHaveAttribute('href', '/compute/');
   await page.getByRole('link', { name: 'Explore Tarian Compute' }).click();
   await expect(page).toHaveURL(/\/compute\/$/);
   await expect(page.locator('main')).toContainText('Research and early conversations');
   await page.getByRole('link', { name: 'Discuss Tarian Compute' }).click();
-  await expect(page.locator('#compute a')).toHaveAttribute('href', 'mailto:ventures@tarianventures.co.uk?subject=Tarian%20Compute%20conversation');
-  await expect(page.locator('#altgrc a')).toHaveAttribute('href', 'mailto:ventures@tarianventures.co.uk?subject=AltGRC%20conversation');
+  await expect(page.locator('#compute a')).toHaveAttribute('href', 'mailto:ventures@tarianventures.com?subject=Tarian%20Compute%20conversation');
+  await expect(page.locator('#altgrc a')).toHaveAttribute('href', 'mailto:ventures@tarianventures.com?subject=AltGRC%20conversation');
   await page.goto('/ventures/');
-  await expect(page.locator('#altgrc')).toContainText('Further development and readiness work are required before deployment for a customer.');
+  await expect(page.locator('#altgrc')).toContainText('Further work is needed before customer deployment.');
 });
 
 test('original network motion can be paused and respects changed motion preferences', async ({ page }) => {

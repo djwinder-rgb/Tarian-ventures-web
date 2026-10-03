@@ -229,3 +229,23 @@ Original SVG connected-plane animation replaces the old decorative shield. An 18
 Production build and all 18 Playwright tests passed. Diagnostics reported zero errors, warnings or hints. Tests include nine route cases, axe, keyboard/no-JavaScript, responsive widths, enlarged text, motion controls, contact journeys, truthful stage assertions, original/public SVG identity and Azure security configuration parity. Approach copy remains checked against the historical specification; the other pages' old-copy expectations were replaced to reflect explicit revision authorisation. No external runtime requests, cookies, storage or page errors observed. White/Charcoal contrast is 15:1; Forest/White 8.52:1. Detailed contrast and screenshots are in `review/venture-outreach/`.
 
 The branch is for visual/content review; the deployed Azure site and custom-domain state are unchanged by this pass. Existing legal/company/domain publication prerequisites remain.
+
+## Company details supplied — 25 September 2026
+
+The user supplied the registered name Tarian Ventures Limited, company number 17238255 and registered office Quest House, Fortran Road, St. Mellons, Cardiff, Wales, CF3 0EY. These are now recorded in shared configuration and displayed in every page's footer. Their source is the user's confirmation; no independent registry verification was performed. Jurisdiction remains unconfirmed, and publication review remains pending. The footer review label now reflects the remaining publication checks.
+
+The user has also ended exploration of paid AI video generation. The existing original network animation remains the current visual direction; video production is no longer pending.
+
+Validation passed: Astro diagnostics reported no errors, warnings or hints, the production build completed, and all 18 browser tests passed, including responsive reflow and accessibility. No Azure deployment was performed.
+
+## Privacy and cookie policy drafts — 25 September 2026
+
+Replaced the legal-page placeholder outlines with substantive review drafts for the website and direct early-stage business enquiries. Incorporated the supplied company identity, purpose/basis proposals, data categories, providers and transfers requiring confirmation, retention proposal, individual rights, complaints route and cookie/storage behaviour. Operational assumptions remain explicitly marked; no claim of legal sign-off, implemented deletion rules or verified email arrangements is made. Future product processing and separate venture entities require their own appropriate notices.
+
+`docs/PUBLICATION_CHECKS.md` records the remaining factual, operational and deployment checks and the official ICO/Microsoft sources consulted. Added an explicit allowance for the ICO complaints hyperlink in the existing link test; all external runtime requests remain prohibited by the same browser assertions. Diagnostics and build passed and all 18 tests passed, including both expanded legal pages at mobile/desktop widths. Publication remains disabled and no Azure deployment was performed.
+
+## Broad venture positioning and review refinements — 30 September 2026
+
+Following the owner's correction to the external review, retained Tarian's broad venture-development purpose, original homepage headline and network animation. Compute is the current priority, not the umbrella's sole purpose or a Wales-only proposition. Added Compute to primary navigation without duplicating its sitemap route; simplified repeated copy, centralised the independent-company explanation on Ventures, and changed AltGRC to In development while retaining its customer-readiness limitation. Approach now uses plain language about time, money and evidence. Footer adds navigation, the general enquiry address, build-year copyright and the Registered in label. Contact retains separate subject-specific enquiry routes with smaller email lettering; 404 now also links to Compute.
+
+No founder image, LinkedIn URL, unsupported biography detail, confidentiality promise or reply-time commitment was invented. Publication flags and outstanding legal facts remain pending. The previous verbatim Approach-copy test was replaced because these copy changes were authorised; the five-stage structure and enquiry journeys remain checked. Diagnostics/build and all 18 browser checks passed, including mobile reflow, accessibility, animation and navigation. Desktop screenshot inspected. No Azure deployment performed.

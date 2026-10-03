@@ -84,7 +84,7 @@ strong { font-weight: 600; }
 .contact-list { padding-bottom: 6rem; }
 .contact-list section { display: grid; grid-template-columns: 1fr 1.4fr; gap: 2rem; align-items: center; padding-block: 2.25rem; border-top: 1px solid var(--rule); }
 .contact-list h2 { font-size: 1.25rem; letter-spacing: -.015em; }
-.contact-list a { display: flex; align-items: center; justify-content: space-between; gap: 1rem; min-height: 44px; font-size: clamp(1rem, 2.4vw, 1.8rem); overflow-wrap: anywhere; }
+.contact-list a { display: flex; align-items: center; justify-content: space-between; gap: 1rem; min-height: 44px; font-size: clamp(1rem, 1.7vw, 1.3rem); overflow-wrap: anywhere; }
 .legal-content { max-width: 52rem; padding-bottom: 6rem; }
 .legal-content section { margin-top: 3rem; color: var(--ink); }
 .legal-content h2 { font-size: 1.7rem; margin-bottom: 1rem; color: var(--forest); }
@@ -96,6 +96,8 @@ strong { font-weight: 600; }
 .footer-top nav { display: flex; gap: 2rem; }
 .site-footer a { color: var(--white); }
 .footer-top nav a { display: flex; align-items: center; min-height: 44px; }
+.footer-navigation { display: flex; flex-wrap: wrap; gap: .5rem 2rem; padding-bottom: 1.5rem; }
+.footer-navigation a { display: inline-flex; align-items: center; min-height: 44px; }
 .footer-bottom { border-top: 1px solid var(--white); padding-top: 2rem; display: flex; justify-content: space-between; gap: 2rem; }
 .company-information { max-width: 36rem; }
 .review-label { margin-bottom: 1rem; }
@@ -171,7 +173,7 @@ strong { font-weight: 600; }
   .approach-list li { grid-template-columns: 2rem 1fr; gap: 1rem; padding-block: 2.5rem; }
   .approach-list .prose { grid-column: 2; }
   .contact-list section { grid-template-columns: 1fr; gap: .75rem; }
-  .contact-list a { font-size: clamp(1rem, 4.5vw, 1.5rem); }
+  .contact-list a { font-size: clamp(1rem, 4vw, 1.25rem); }
   .footer-top, .footer-bottom { align-items: flex-start; flex-direction: column; gap: 1.5rem; }
   .company-information dl div { grid-template-columns: 1fr; gap: 0; margin-top: .75rem; }
   .company-information dt { color: var(--white); }

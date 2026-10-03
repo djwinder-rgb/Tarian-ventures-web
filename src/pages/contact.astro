@@ -4,7 +4,7 @@ import PageIntro from '../components/PageIntro.astro';
 import { site } from '../config/site';
 ---
 <Layout title="Contact — Start a conversation" description="We are interested in speaking with organisations and individuals working on significant problems, emerging technologies and new market opportunities.">
-  <PageIntro label="Contact" title="Start a useful conversation."><p>A practical perspective, a question worth testing or an opportunity to explore together.</p><p>Tarian is currently opening conversations around compute infrastructure and the continued development of governance technology.</p></PageIntro>
+  <PageIntro label="Contact" title="Start a useful conversation."><p>A practical perspective, a question worth testing or an opportunity to explore together.</p><p>Our current priority is compute infrastructure. We also welcome conversations about AltGRC and other ideas worth exploring.</p></PageIntro>
   <div class="shell contact-list">
     <section id="compute"><div><h2>Tarian Compute</h2><p>Power, connectivity, locations, delivery expertise or compute demand.</p></div><a href={`mailto:${site.contact.ventures}?subject=Tarian%20Compute%20conversation`}>{site.contact.ventures}<span aria-hidden="true">↗</span></a></section>
     <section id="altgrc"><div><h2>AltGRC</h2><p>Governance challenges, demonstration enquiries or feedback on the proposition.</p></div><a href={`mailto:${site.contact.ventures}?subject=AltGRC%20conversation`}>{site.contact.ventures}<span aria-hidden="true">↗</span></a></section>

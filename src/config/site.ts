@@ -14,27 +14,28 @@ interface SiteConfiguration {
   contact: { general: string; ventures: string };
 }
 export const site: SiteConfiguration = {
-  productionOrigin: null,
+  productionOrigin: 'https://tarianventures.com',
   publicationReviewed: false,
   company: {
-    registeredName: null,
-    number: null,
-    registeredOffice: null,
-    jurisdiction: null,
+    registeredName: 'Tarian Ventures Limited',
+    number: '17238255',
+    registeredOffice: 'Quest House, Fortran Road, St. Mellons, Cardiff, Wales, CF3 0EY',
+    jurisdiction: 'England and Wales',
   },
   contact: {
-    general: 'hello@tarianventures.co.uk',
-    ventures: 'ventures@tarianventures.co.uk',
+    general: 'hello@tarianventures.com',
+    ventures: 'ventures@tarianventures.com',
   },
 };
 export const navigation = [
   { href: '/', label: 'Home' },
   { href: '/ventures/', label: 'Ventures' },
+  { href: '/compute/', label: 'Compute' },
   { href: '/approach/', label: 'Approach' },
   { href: '/about/', label: 'About' },
   { href: '/contact/', label: 'Contact' },
 ];
-export const publicRoutes = [...navigation.map(({ href }) => href), '/compute/', '/privacy/', '/cookies/'];
+export const publicRoutes = [...navigation.map(({ href }) => href), '/privacy/', '/cookies/'];
 export const organizationJson = JSON.stringify({
   '@context': 'https://schema.org',
   '@type': 'Organization',
