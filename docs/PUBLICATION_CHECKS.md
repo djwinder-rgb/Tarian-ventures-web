@@ -1,3 +1,11 @@
+# Deployment preparation update — 3 October 2026
+
+The current reviewed build is now deployed to https://ashy-mud-035919310.1.azurestaticapps.net/ and all 18 automated tests passed against Azure. Source commit b517061 is saved and pushed. This supersedes earlier statements below that the local build has not been deployed. It is still a review release with noindex, review labels and draft policy notices.
+
+Azure ownership checks for the apex and www domains are prepared; Cloudflare sign-in is required before DNS work can continue. No DNS/email changes have been made. The owner requested policies be reviewed together last, after technical preparation. See AZURE_HOSTING.md for the exact next steps and manual checklist.
+
+---
+
 # Launch readiness review — 3 October 2026
 
 Current verdict: design and core content ready; public launch awaits the items below. This section supersedes older unresolved-question lists. Do not re-request the owner confirmations recorded on 1 October.

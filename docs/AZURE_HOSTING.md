@@ -1,27 +1,44 @@
-# Azure hosting preparation
+# Azure hosting and release preparation
 
-20 September 2026. Hosting target changed from Cloudflare Pages to Azure Static Web Apps at the user's request. Cloudflare remains the domain registrar/DNS provider.
+Updated 3 October 2026.
 
-## Verified reference setup
+## Verified Tarian resource
 
-Read-only Azure inspection found subscription `Azure subscription 1`, resource group `altgrc-public-web-prod_group`, and Static Web App `altgrc-public-web-prod`. It uses the Free tier in Central US. Its resource reports no repository connection, branch or custom domains. The resource group's location is West Europe; the app's own location is Central US.
+- Subscription: Azure subscription 1 (`597d64e5-20da-4cef-aacb-ebca54f66d0e`).
+- Resource group: `tarian-public-web-prod_group`.
+- Static Web App: `tarian-public-web-prod`, Free tier.
+- Review URL: https://ashy-mud-035919310.1.azurestaticapps.net/
+- Reviewed website source: commit `b517061` on `codex/venture-outreach`.
+- Current build deployed successfully on 3 October 2026; Azure environment reports Ready.
 
-Tarian should use a separate Static Web App and resource group in the same subscription, following this model. No changes were made to AltGRC. No Tarian cloud resources or deployment were created in this preparation pass.
+Tarian uses its own resource. AltGRC's established production pipeline targets `purple-hill-0befdc203.7.azurestaticapps.net`; the similarly named AltGRC resource in this CLI subscription is a different instance. Do not use it as the production deployment destination.
 
-## Prepared build
+## Validation
 
-Build with the pinned project runtime and `npm ci`, then `npm run build`. Deploy `dist/` as prebuilt static output. The build now emits Azure's `staticwebapp.config.json` with the same global CSP and security headers as the existing Cloudflare configuration, review noindex, fingerprinted asset caching and a branded 404 response. No SPA fallback is configured. No API/backend or application settings are needed.
+Astro check/build and 18 local Playwright tests passed. The same 18 tests passed against the actual Azure review URL. Checks cover routes, missing-page HTTP 404, security headers, metadata, links/assets, accessibility, responsive reflow, keyboard navigation, reduced motion, JavaScript-disabled behaviour, and absence of cookies/storage/external requests in the tested pages. The deployed CSP hash matches the current build. Physical-device testing remains for the owner.
 
-Azure configuration reference: https://learn.microsoft.com/en-us/azure/static-web-apps/configuration
+Run the hosted suite after future deployments:
 
-The local suite checks Azure configuration parity; local browser checks do not emulate Azure routing or prove deployed response headers. A hosted preview must still verify direct routes, genuine 404 status, CSP, headers, requests, cookies and storage.
+```sh
+TARIAN_TEST_BASE_URL=https://ashy-mud-035919310.1.azurestaticapps.net npm test
+```
 
-## Remaining publication inputs
+The suite allows only the known Azure and Tarian custom hostnames. The local suite remains `npm run validate`. Build output is `dist/`; deploy it as prebuilt static output with no API. The Azure deployment credential was read directly into process memory and never persisted or printed.
 
-- Confirm the production domain and any apex/www redirect preference.
-- Confirm statutory company details and both published mailboxes.
-- Confirm enquiry processing, email provider and retention arrangements for the privacy notice.
-- Keep `publicationReviewed` false until those facts and hosted behaviour are verified.
-- Review indexing separately for preview/default Azure hostnames before enabling public indexing; the old Cloudflare hostname-specific rules do not apply to Azure.
+## Domain preparation — awaiting Cloudflare access
 
-Do not connect a live custom domain or remove review controls before these checks. Keep deployment credentials out of the repository and terminal output.
+Azure ownership verification has been initiated for `tarianventures.com` and `www.tarianventures.com`; both are Validating. Cloudflare is currently at its sign-in screen. No DNS records have been changed. Existing IONOS MX/SPF and all other email records must be preserved.
+
+Retrieve the current public verification values with `az staticwebapp hostname list -n tarian-public-web-prod -g tarian-public-web-prod_group`. Add the required TXT records at `@` and `www` respectively. Validate ownership first; use DNS-only CNAME records to the Azure hostname (Cloudflare apex flattening) for website routing when ready. Verify HTTPS before relying on either hostname.
+
+After both custom names are validated and reachable, designate `tarianventures.com` as Azure's default domain. This should redirect www and the generated Azure hostname to the primary domain; verify status codes, path and query preservation. Do not enable a redirect before its destination works.
+
+References: https://learn.microsoft.com/en-us/azure/static-web-apps/apex-domain-external and https://learn.microsoft.com/en-us/azure/static-web-apps/custom-domain-default .
+
+## Final launch gate
+
+The owner requested policy review last. Policies and review labels are unchanged. `publicationReviewed` remains false: deployed headers and meta remain noindex, robots disallows crawling and sitemap contains no public entries. A review URL is publicly reachable; noindex is not access control.
+
+After domain tests and the owner's manual check, review the privacy/cookie details together, remove the editorial notices, set publicationReviewed true, build and deploy the final release, then rerun the suite on https://tarianventures.com. Verify redirects from www and Azure and check actual robots/sitemap/canonical output. No public-launch declaration until these gates pass.
+
+Manual check: open on a phone and desktop/Safari; navigate every page; try the mobile menu and animation pause; confirm email links open the correct address; check the logo and readable layout. Review policy content separately at the final step.

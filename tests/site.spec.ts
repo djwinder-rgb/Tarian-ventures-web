@@ -28,12 +28,16 @@ for (const route of routes) {
     expect(response?.status()).toBe(route === '/not-a-page/' ? 404 : 200);
     await page.screenshot({ path: `test-results/visuals/${route === '/' ? 'home' : route.split('/')[1]}-desktop.png`, fullPage: true });
     expect(response?.headers()['content-security-policy']).toContain("connect-src 'none'");
+    if (!site.publicationReviewed) expect(response?.headers()['x-robots-tag']).toContain('noindex');
+    else expect(response?.headers()['x-robots-tag'] ?? '').not.toContain('noindex');
     await expect(page.locator('main h1')).toHaveCount(1);
     await expect(page).toHaveTitle(/.+ \| Tarian Ventures/);
     expect(await page.locator('meta[name="description"]').getAttribute('content')).toBeTruthy();
     await expect(page.locator('meta[property="og:image"]')).toHaveAttribute('content', /tarian-social\.png$/);
     expect(JSON.parse(await page.locator('script[type="application/ld+json"]').innerText()).name).toBe('Tarian Ventures');
     if (!site.publicationReviewed) await expect(page.locator('meta[name="robots"]')).toHaveAttribute('content', 'noindex, nofollow');
+    else if (route !== '/not-a-page/') await expect(page.locator('meta[name="robots"]')).toHaveCount(0);
+    if (site.productionOrigin && route !== '/not-a-page/') await expect(page.locator('link[rel="canonical"]')).toHaveAttribute('href', new URL(route, site.productionOrigin).href);
     if (!site.productionOrigin) await expect(page.locator('link[rel="canonical"]')).toHaveCount(0);
     expect((await new AxeBuilder({ page }).withTags(['wcag2a', 'wcag2aa', 'wcag21aa', 'wcag22aa']).analyze()).violations).toEqual([]);
     for (const width of [320, 375, 390, 768, 1024, 1440]) {
@@ -73,6 +77,11 @@ test('all local links and asset references resolve; titles and descriptions are 
   const robots = await (await request.get('/robots.txt')).text();
   const sitemap = await (await request.get('/sitemap.xml')).text();
   if (!site.publicationReviewed) { expect(robots).toContain('Disallow: /'); expect(sitemap).not.toContain('<loc>'); }
+  else {
+    expect(robots).not.toContain('Disallow: /');
+    expect(robots).toContain(`${site.productionOrigin}/sitemap.xml`);
+    for (const route of publicRoutes) expect(sitemap).toContain(`<loc>${new URL(route, site.productionOrigin).href}</loc>`);
+  }
 });
 
 test('Approach retains the five evidence-led stages', async ({ page }) => {
