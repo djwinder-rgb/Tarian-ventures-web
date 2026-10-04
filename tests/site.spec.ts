@@ -78,6 +78,7 @@ test('all local links and asset references resolve; titles and descriptions are 
   const sitemap = await (await request.get('/sitemap.xml')).text();
   if (!site.publicationReviewed) { expect(robots).toContain('Disallow: /'); expect(sitemap).not.toContain('<loc>'); }
   else {
+    if (!site.productionOrigin) throw new Error('Published site requires a production origin.');
     expect(robots).not.toContain('Disallow: /');
     expect(robots).toContain(`${site.productionOrigin}/sitemap.xml`);
     for (const route of publicRoutes) expect(sitemap).toContain(`<loc>${new URL(route, site.productionOrigin).href}</loc>`);
