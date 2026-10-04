@@ -1,3 +1,9 @@
+# Presentation cleanup — 4 October 2026
+
+At the owner’s request, removed the shared footer review label and the privacy/cookie editorial review notices and future-drafting instructions. Outstanding provider verification (email backup lifecycle, processing locations/transfers and website logs) remains an internal launch prerequisite; these removals do not constitute policy approval or verification. No replacement assurances were invented. Policies must still be reviewed together before final launch. publicationReviewed remains false and indexing remains disabled.
+
+---
+
 # Domain preparation — 4 October 2026
 
 Cloudflare access is resolved. Apex ownership TXT and DNS-only apex/www CNAME records have been saved and verified through public DNS. Existing email records are unchanged. Azure domain validation/certificates remain pending, so redirects and final-domain tests are not yet complete. See AZURE_HOSTING.md. Policies remain for joint review last; indexing stays disabled.

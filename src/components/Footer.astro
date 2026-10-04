@@ -17,7 +17,6 @@ const fields = [
     <div class="footer-bottom">
       <div><p>© {new Date().getFullYear()} {site.company.registeredName ?? 'Tarian Ventures'}</p><a href={`mailto:${site.contact.general}`}>{site.contact.general}</a></div>
       <div class="company-information">
-        {!site.publicationReviewed && <p class="review-label">Review build · Publication checks pending</p>}
         <dl>{fields.map(([label, value]) => <div><dt>{label}</dt><dd>{value ?? 'Not yet verified'}</dd></div>)}</dl>
       </div>
     </div>
