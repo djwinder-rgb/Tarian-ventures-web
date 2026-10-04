@@ -1,13 +1,16 @@
 ---
 import Layout from '../layouts/Layout.astro';
 import PageIntro from '../components/PageIntro.astro';
+import { site } from '../config/site';
 ---
-<Layout title="Cookies" description="Cookie and browser-storage information for the Tarian Ventures website implementation.">
-  <PageIntro label="Legal information" title="Cookies"><p>How this website implementation uses cookies and browser storage.</p></PageIntro>
+<Layout title="Cookie policy" description="Cookies, browser storage and similar technologies on the Tarian Ventures website.">
+  <PageIntro label="Legal information" title="Cookie policy"><p>A simple website without advertising or analytics tracking.</p></PageIntro>
   <div class="shell legal-content">
-    <aside class="review-notice" aria-label="Review status"><strong>Review draft — deployment verification pending.</strong><p>Final wording requires a check of the published hosting configuration and browser behaviour.</p></aside>
-    <section><h2>Website code</h2><p>The V1 website code does not set cookies or use local storage or session storage. It includes no analytics, advertising, trackers, third-party scripts or embedded content.</p><p>The navigation menu keeps its open or closed state only while the page is open; it does not save a preference to your browser.</p></section>
-    <section><h2>Hosting verification</h2><p>Hosting services may behave differently depending on their configuration. Before publication, the deployed site must be checked for cookies, injected scripts and other network activity, and this page updated to describe the observed behaviour accurately.</p><p>No claim about unverified hosting behaviour is made in this review draft.</p></section>
-    <p><a class="text-link" href="/privacy/">Read the privacy information <span aria-hidden="true">↗</span></a></p>
+    <section><h2>Who we are</h2><p>This policy applies to the Tarian Ventures website operated by {site.company.registeredName}, company number {site.company.number}, at {site.company.registeredOffice}.</p></section>
+    <section><h2>Cookies and similar technologies</h2><p>Cookies are small pieces of information a website can store in your browser. Other technologies can store or access information on your device, including local storage, tracking pixels and device fingerprinting.</p></section>
+    <section><h2>What this website uses</h2><p>The current website does not set cookies or use local storage or session storage. It has no analytics, advertising pixels, fingerprinting, third-party scripts or embedded media. Its fonts, logos and animation are served as part of the site.</p><p>The navigation menu and animation controls keep their state only while the page is open. They do not save a preference. The animation respects your device's reduced-motion setting without sending that setting to us.</p><p>There are no application cookie names, purposes or expiry periods to list. No cookie consent banner is included because the current implementation has no consent-requiring storage or tracking features.</p></section>
+    <section><h2>Hosting and external links</h2><p>Microsoft Azure serves the website and receives the technical information needed to deliver pages. Server-side processing is separate from storing cookies on your device; see our <a href="/privacy/">privacy policy</a> for information about how personal information is handled.</p><p>Following an external link or opening your email application takes you to another service. That service has its own privacy and cookie arrangements. We do not embed it simply by linking to it.</p></section>
+    <section><h2>Your choices and future changes</h2><p>You can manage cookies and stored website data through your browser settings. This website is designed to work with cookies blocked.</p><p>If we add features that use cookies or similar technologies, we will review them and update this policy before they are enabled. Where consent is required, we will ask first and provide a way to withdraw it.</p></section>
+    <section><h2>Contact</h2><p>For questions, write to the registered office above or email <a href={`mailto:${site.contact.general}`}>{site.contact.general}</a>. Dan Winder monitors this address and handles privacy enquiries.</p></section>
   </div>
 </Layout>

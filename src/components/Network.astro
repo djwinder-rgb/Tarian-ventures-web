@@ -1,0 +1,46 @@
+---
+// Original architectural network: three connected planes, not a map of real assets.
+const points = [
+  [90,245],[180,200],[270,155],[360,110],[450,155],[540,200],[630,245],
+  [180,290],[270,245],[360,200],[450,245],[540,290],
+  [270,335],[360,290],[450,335],[360,380],
+];
+const connections = [[0,1],[1,2],[2,3],[3,4],[4,5],[5,6],[0,7],[7,12],[12,15],[15,14],[14,11],[11,6],[1,8],[8,13],[13,14],[2,9],[9,10],[10,11],[7,8],[8,9],[9,4],[12,13],[13,10],[10,5]];
+---
+<div class="network" data-network>
+  <svg class="network-art" viewBox="0 0 720 500" fill="none" aria-hidden="true" focusable="false">
+    <g class="network-underlay" stroke="currentColor">
+      <path d="M90 305L360 440L630 305M90 275L360 410L630 275" />
+      <path d="M90 245V305M360 380V440M630 245V305M360 110V70" />
+      <path d="M70 365H130M100 335V395M590 115H650M620 85V145" />
+    </g>
+    <g class="network-links" stroke="currentColor">
+      {connections.map(([a,b]) => <path d={`M${points[a][0]} ${points[a][1]}L${points[b][0]} ${points[b][1]}`} />)}
+    </g>
+    <g class="network-flow" stroke="currentColor" stroke-width="2">
+      <path pathLength="100" d="M90 245L180 200L270 245L360 290L450 245L540 200L630 245" />
+      <path pathLength="100" d="M360 110L360 200L270 245L270 335L360 380" />
+    </g>
+    <g fill="currentColor">{points.map(([x,y]) => <circle cx={x} cy={y} r="3" />)}</g>
+    <g class="network-hubs" stroke="currentColor"><circle cx="360" cy="200" r="12" /><circle cx="270" cy="335" r="12" /><circle cx="540" cy="200" r="12" /></g>
+  </svg>
+  <div class="network-caption"><span>Ideas. Connections. Possibilities.</span><button class="motion-toggle" type="button" aria-pressed="false" hidden>Pause animation</button></div>
+</div>
+<script>
+  document.querySelectorAll<HTMLElement>('[data-network]').forEach(network => {
+    const button = network.querySelector<HTMLButtonElement>('button');
+    if (!button) return;
+    const reduced = matchMedia('(prefers-reduced-motion: reduce)');
+    let paused = false;
+    const sync = () => {
+      const playing = !reduced.matches && !paused;
+      network.classList.toggle('is-playing', playing);
+      button.hidden = reduced.matches;
+      button.textContent = paused ? 'Play animation' : 'Pause animation';
+      button.setAttribute('aria-pressed', String(paused));
+    };
+    button.addEventListener('click', () => { paused = !paused; sync(); });
+    reduced.addEventListener('change', sync);
+    sync();
+  });
+</script>

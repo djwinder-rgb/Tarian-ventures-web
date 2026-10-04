@@ -3,6 +3,7 @@ import AxeBuilder from '@axe-core/playwright';
 import { readFile } from 'node:fs/promises';
 import { site, publicRoutes } from '../src/config/site';
 const routes = [...publicRoutes, '/not-a-page/'];
+const testOrigin = new URL(process.env.TARIAN_TEST_BASE_URL ?? 'http://127.0.0.1:4321').origin;
 
 test('Azure hosting preserves security, review indexing and genuine 404 responses', async () => {
   const azure = JSON.parse(await readFile('dist/staticwebapp.config.json', 'utf8'));
@@ -20,19 +21,23 @@ for (const route of routes) {
   test(`${route}: direct route, metadata, accessibility, privacy and reflow`, async ({ page, context }) => {
     const external: string[] = [];
     const errors: string[] = [];
-    page.on('request', request => { if (new URL(request.url()).origin !== 'http://127.0.0.1:4321') external.push(request.url()); });
+    page.on('request', request => { if (new URL(request.url()).origin !== testOrigin) external.push(request.url()); });
     page.on('pageerror', error => errors.push(error.message));
     page.on('console', message => { if (message.type() === 'error' && !message.text().includes('404')) errors.push(message.text()); });
     const response = await page.goto(route);
     expect(response?.status()).toBe(route === '/not-a-page/' ? 404 : 200);
     await page.screenshot({ path: `test-results/visuals/${route === '/' ? 'home' : route.split('/')[1]}-desktop.png`, fullPage: true });
     expect(response?.headers()['content-security-policy']).toContain("connect-src 'none'");
+    if (!site.publicationReviewed) expect(response?.headers()['x-robots-tag']).toContain('noindex');
+    else expect(response?.headers()['x-robots-tag'] ?? '').not.toContain('noindex');
     await expect(page.locator('main h1')).toHaveCount(1);
     await expect(page).toHaveTitle(/.+ \| Tarian Ventures/);
     expect(await page.locator('meta[name="description"]').getAttribute('content')).toBeTruthy();
     await expect(page.locator('meta[property="og:image"]')).toHaveAttribute('content', /tarian-social\.png$/);
     expect(JSON.parse(await page.locator('script[type="application/ld+json"]').innerText()).name).toBe('Tarian Ventures');
     if (!site.publicationReviewed) await expect(page.locator('meta[name="robots"]')).toHaveAttribute('content', 'noindex, nofollow');
+    else if (route !== '/not-a-page/') await expect(page.locator('meta[name="robots"]')).toHaveCount(0);
+    if (site.productionOrigin && route !== '/not-a-page/') await expect(page.locator('link[rel="canonical"]')).toHaveAttribute('href', new URL(route, site.productionOrigin).href);
     if (!site.productionOrigin) await expect(page.locator('link[rel="canonical"]')).toHaveCount(0);
     expect((await new AxeBuilder({ page }).withTags(['wcag2a', 'wcag2aa', 'wcag21aa', 'wcag22aa']).analyze()).violations).toEqual([]);
     for (const width of [320, 375, 390, 768, 1024, 1440]) {
@@ -61,35 +66,59 @@ test('all local links and asset references resolve; titles and descriptions are 
     for (const ref of await page.locator('[href], [src], [srcset], meta[property="og:image"]').evaluateAll(nodes => nodes.flatMap(node => [node.getAttribute('href'), node.getAttribute('src'), node.getAttribute('srcset'), node.getAttribute('content')].filter((value): value is string => !!value)))) {
       if (ref.startsWith('#')) await expect(page.locator(ref)).toHaveCount(1);
       else if (ref.startsWith('/')) references.add(ref);
+      else if (site.productionOrigin && new URL(ref, site.productionOrigin).origin === site.productionOrigin) references.add(new URL(ref).pathname);
+      else if (['https://ico.org.uk/make-a-complaint/', 'https://businesswales.gov.wales/news-and-blog/second-ai-growth-zone-wales-announced'].includes(ref)) continue;
       else expect(ref).toMatch(/^mailto:/);
     }
   }
   for (const ref of references) expect((await request.get(ref)).status(), ref).toBe(200);
-  expect(titles.size).toBe(7);
-  expect(descriptions.size).toBe(7);
+  expect(titles.size).toBe(publicRoutes.length);
+  expect(descriptions.size).toBe(publicRoutes.length);
   const robots = await (await request.get('/robots.txt')).text();
   const sitemap = await (await request.get('/sitemap.xml')).text();
   if (!site.publicationReviewed) { expect(robots).toContain('Disallow: /'); expect(sitemap).not.toContain('<loc>'); }
+  else {
+    if (!site.productionOrigin) throw new Error('Published site requires a production origin.');
+    expect(robots).not.toContain('Disallow: /');
+    expect(robots).toContain(`${site.productionOrigin}/sitemap.xml`);
+    for (const route of publicRoutes) expect(sitemap).toContain(`<loc>${new URL(route, site.productionOrigin).href}</loc>`);
+  }
 });
 
-test('approved copy is preserved verbatim across the five primary pages', async ({ page }) => {
-  const spec = await readFile('guidance/CODEX_WEBSITE_IMPLEMENTATION_SPEC.md', 'utf8');
-  for (const [number, route] of [[5, '/'], [6, '/ventures/'], [7, '/approach/'], [8, '/about/'], [9, '/contact/']] as const) {
-    const section = spec.split(`## ${number}. `)[1].split(`## ${number + 1}. `)[0].split('\n').slice(1);
-    await page.goto(route);
-    const text = (await page.locator('main').evaluate(main => {
-      const copy = main.cloneNode(true) as HTMLElement;
-      copy.querySelectorAll('br').forEach(br => br.replaceWith(' '));
-      return copy.textContent ?? '';
-    })).replace(/\s+/g, ' ');
-    for (let line of section) {
-      line = line.trim().replace(/^#+\s*/, '').replaceAll('**', '').replace(/^(CTA|Section|Status treatment):\s*/, '');
-      if (!line || ['Hero:', 'Display:'].includes(line) || line.startsWith('Do not add')) continue;
-      if (line.includes(' — ')) {
-        for (const part of line.split(' — ')) expect(text).toContain(part);
-      } else expect(text).toContain(line);
-    }
-  }
+test('Approach retains the five evidence-led stages', async ({ page }) => {
+  await page.goto('/approach/');
+  await expect(page.locator('.approach-list h2')).toHaveText(['Discover', 'Validate', 'Experiment', 'Build', 'Scale or stop']);
+  await expect(page.locator('main')).toContainText('Ideas should earn more time and money as the evidence builds.');
+});
+
+test('outreach copy reflects the user-confirmed stage and directs relevant enquiries', async ({ page }) => {
+  await page.goto('/');
+  await expect(page.locator('main')).toContainText('A home for exploring new business ideas');
+  await expect(page.locator('main')).toContainText('In development');
+  await expect(page.locator('main h1')).toHaveText('Building businesses around problems worth solving.');
+  await expect(page.locator('header nav').getByRole('link', { name: 'Compute', exact: true })).toHaveAttribute('href', '/compute/');
+  await page.getByRole('link', { name: 'Explore Tarian Compute' }).click();
+  await expect(page).toHaveURL(/\/compute\/$/);
+  await expect(page.locator('main')).toContainText('Research and early conversations');
+  await page.getByRole('link', { name: 'Discuss Tarian Compute' }).click();
+  await expect(page.locator('#compute a')).toHaveAttribute('href', 'mailto:ventures@tarianventures.com?subject=Tarian%20Compute%20conversation');
+  await expect(page.locator('#altgrc a')).toHaveAttribute('href', 'mailto:ventures@tarianventures.com?subject=AltGRC%20conversation');
+  await page.goto('/ventures/');
+  await expect(page.locator('#altgrc')).toContainText('Further work is needed before customer deployment.');
+});
+
+test('original network motion can be paused and respects changed motion preferences', async ({ page }) => {
+  await page.emulateMedia({ reducedMotion: 'no-preference' });
+  await page.goto('/');
+  const flow = page.locator('.network-flow');
+  await expect(flow).toHaveCSS('animation-play-state', 'running');
+  await page.getByRole('button', { name: 'Pause animation' }).click();
+  await expect(flow).toHaveCSS('animation-play-state', 'paused');
+  await page.getByRole('button', { name: 'Play animation' }).click();
+  await expect(flow).toHaveCSS('animation-play-state', 'running');
+  await page.emulateMedia({ reducedMotion: 'reduce' });
+  await expect(flow).toHaveCSS('animation-name', 'none');
+  await expect(page.locator('.motion-toggle')).toBeHidden();
 });
 
 test('keyboard menu, Escape, focus and reduced motion', async ({ page }) => {
@@ -121,6 +150,8 @@ test('navigation and approved content work without JavaScript', async ({ browser
   const context = await browser.newContext({ javaScriptEnabled: false, viewport: { width: 320, height: 800 } });
   const page = await context.newPage();
   await page.goto('http://127.0.0.1:4321/');
+  await expect(page.locator('.network-flow')).toHaveCSS('animation-play-state', 'paused');
+  await expect(page.locator('.motion-toggle')).toBeHidden();
   await expect(page.getByRole('button', { name: 'Menu' })).toBeHidden();
   await page.getByRole('navigation', { name: 'Main navigation' }).getByRole('link', { name: 'Ventures' }).click();
   await expect(page.getByRole('heading', { name: 'Tarian Compute' })).toBeVisible();

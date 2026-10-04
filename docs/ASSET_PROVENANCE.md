@@ -36,6 +36,8 @@ No image model, downloaded artwork or new external licence was introduced. Deriv
 
 ## Decorative geometry and fonts
 
+20 September outreach revision: `src/components/Network.astro` is original project-authored SVG geometry and CSS signal motion. It uses no third-party asset or animation library and depicts no real infrastructure. The previous `Geometry.astro` contour is no longer displayed. Master supplied logos and metadata remain unchanged. No founder portrait, AltGRC application screenshot or generated video was added; no approved source image was available and internal demonstration data was not exported. Future cinematic briefs are in `docs/VIDEO_DIRECTION.md` and do not constitute produced/licensed assets.
+
 `src/components/Geometry.astro` contains project-authored shield-inspired outlines. Decorative, hidden from assistive technology and used only in the desktop homepage hero; never a replacement for the supplied logo.
 
 Page text uses `Arial, sans-serif`. SVG text retains its supplied font stack. No font files/services are included. Future bundled fonts need an official source, version, licence and licence file recorded.

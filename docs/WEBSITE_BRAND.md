@@ -1,5 +1,11 @@
 # Authoritative website brand
 
+## Outreach revision — 20 September 2026
+
+The user authorised a new review direction after clarifying Tarian's early-stage umbrella model and Compute outreach purpose. Current review palette: Forest `#13564D`, White `#FFFFFF`, Pale Forest `#F3F7F6`, Charcoal `#20282B`, Decorative Rule `#D0DDDB`. Charcoal replaces Deep Ink and carries general headings/prose and the hero surface. Forest is selective: labels, links, controls and footer. Supplied logo artwork remains unchanged.
+
+Original connected-plane SVG motion in `Network.astro` replaces the old hero shield, with pause/play, static no-JavaScript fallback and reduced-motion support. It is abstract and decorative, not a depiction of real infrastructure. Compact shield-plus-TARIAN identity remains unchanged. See `review/venture-outreach/REVIEW.md` and `docs/VIDEO_DIRECTION.md`. The material below records the previous approved baseline and is superseded where this revision differs.
+
 Approved by human visual review; formalised 19 September 2026. This document supersedes historical website palette and logo-presentation instructions. Approved architecture, copy, typography hierarchy, page compositions and spacing are frozen unless separately authorised.
 
 - Forest `#13564D`: primary identity, major headings, selected controls, geometry and deliberate high-impact sections.

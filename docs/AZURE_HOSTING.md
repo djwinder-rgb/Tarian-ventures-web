@@ -1,27 +1,48 @@
-# Azure hosting preparation
+# Azure hosting and release preparation
 
-20 September 2026. Hosting target changed from Cloudflare Pages to Azure Static Web Apps at the user's request. Cloudflare remains the domain registrar/DNS provider.
+Updated 4 October 2026.
 
-## Verified reference setup
+## Verified Tarian resource
 
-Read-only Azure inspection found subscription `Azure subscription 1`, resource group `altgrc-public-web-prod_group`, and Static Web App `altgrc-public-web-prod`. It uses the Free tier in Central US. Its resource reports no repository connection, branch or custom domains. The resource group's location is West Europe; the app's own location is Central US.
+- Subscription: Azure subscription 1 (`597d64e5-20da-4cef-aacb-ebca54f66d0e`).
+- Resource group: `tarian-public-web-prod_group`.
+- Static Web App: `tarian-public-web-prod`, Free tier.
+- Review URL: https://ashy-mud-035919310.1.azurestaticapps.net/
+- Reviewed website source: commit `b517061` on `codex/venture-outreach`.
+- Current build deployed successfully on 3 October 2026; Azure environment reports Ready.
 
-Tarian should use a separate Static Web App and resource group in the same subscription, following this model. No changes were made to AltGRC. No Tarian cloud resources or deployment were created in this preparation pass.
+Tarian uses its own resource. AltGRC's established production pipeline targets `purple-hill-0befdc203.7.azurestaticapps.net`; the similarly named AltGRC resource in this CLI subscription is a different instance. Do not use it as the production deployment destination.
 
-## Prepared build
+## Validation
 
-Build with the pinned project runtime and `npm ci`, then `npm run build`. Deploy `dist/` as prebuilt static output. The build now emits Azure's `staticwebapp.config.json` with the same global CSP and security headers as the existing Cloudflare configuration, review noindex, fingerprinted asset caching and a branded 404 response. No SPA fallback is configured. No API/backend or application settings are needed.
+Astro check/build and 18 local Playwright tests passed. The same 18 tests passed against the actual Azure review URL. Checks cover routes, missing-page HTTP 404, security headers, metadata, links/assets, accessibility, responsive reflow, keyboard navigation, reduced motion, JavaScript-disabled behaviour, and absence of cookies/storage/external requests in the tested pages. The deployed CSP hash matches the current build. Physical-device testing remains for the owner.
 
-Azure configuration reference: https://learn.microsoft.com/en-us/azure/static-web-apps/configuration
+Run the hosted suite after future deployments:
 
-The local suite checks Azure configuration parity; local browser checks do not emulate Azure routing or prove deployed response headers. A hosted preview must still verify direct routes, genuine 404 status, CSP, headers, requests, cookies and storage.
+```sh
+TARIAN_TEST_BASE_URL=https://ashy-mud-035919310.1.azurestaticapps.net npm test
+```
 
-## Remaining publication inputs
+The suite allows only the known Azure and Tarian custom hostnames. The local suite remains `npm run validate`. Build output is `dist/`; deploy it as prebuilt static output with no API. The Azure deployment credential was read directly into process memory and never persisted or printed.
 
-- Confirm the production domain and any apex/www redirect preference.
-- Confirm statutory company details and both published mailboxes.
-- Confirm enquiry processing, email provider and retention arrangements for the privacy notice.
-- Keep `publicationReviewed` false until those facts and hosted behaviour are verified.
-- Review indexing separately for preview/default Azure hostnames before enabling public indexing; the old Cloudflare hostname-specific rules do not apply to Azure.
+## Domain setup — 4 October 2026
 
-Do not connect a live custom domain or remove review controls before these checks. Keep deployment credentials out of the repository and terminal output.
+Cloudflare sign-in verified. Added three records only:
+
+- TXT at `@`: current Azure ownership value (read from hostname list).
+- DNS-only CNAME at `@`: `ashy-mud-035919310.1.azurestaticapps.net`, flattened by Cloudflare.
+- DNS-only CNAME at `www`: same Azure hostname.
+
+The apex uses TXT validation. The www Azure binding was switched to CNAME delegation, avoiding a conflicting TXT and CNAME at the same subdomain. Original IONOS MX, SPF, DKIM, DMARC and other existing records were preserved. Authoritative Cloudflare DNS and the 1.1.1.1 public resolver return the new records. Cloudflare is DNS-only for website traffic; no proxy, analytics or additional service was enabled.
+
+Azure still reports both domains as Validating with no error; certificate provisioning and local resolver propagation are pending. Do not bypass TLS certificate checks. Once both names are validated and HTTPS is working, set `tarianventures.com` as the default in Azure Custom domains. Then test www and generated-host redirects, preserving paths/query strings, and run the full suite on the primary domain. No default-domain redirect has yet been set.
+
+References: https://learn.microsoft.com/en-us/azure/static-web-apps/apex-domain-external and https://learn.microsoft.com/en-us/azure/static-web-apps/custom-domain-default .
+
+## Final launch gate
+
+The owner requested policy review last. Policies and review labels are unchanged. `publicationReviewed` remains false: deployed headers and meta remain noindex, robots disallows crawling and sitemap contains no public entries. A review URL is publicly reachable; noindex is not access control.
+
+After domain tests and the owner's manual check, review the privacy/cookie details together, remove the editorial notices, set publicationReviewed true, build and deploy the final release, then rerun the suite on https://tarianventures.com. Verify redirects from www and Azure and check actual robots/sitemap/canonical output. No public-launch declaration until these gates pass.
+
+Manual check: open on a phone and desktop/Safari; navigate every page; try the mobile menu and animation pause; confirm email links open the correct address; check the logo and readable layout. Review policy content separately at the final step.
