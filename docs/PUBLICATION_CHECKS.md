@@ -1,3 +1,9 @@
+# Domain preparation — 4 October 2026
+
+Cloudflare access is resolved. Apex ownership TXT and DNS-only apex/www CNAME records have been saved and verified through public DNS. Existing email records are unchanged. Azure domain validation/certificates remain pending, so redirects and final-domain tests are not yet complete. See AZURE_HOSTING.md. Policies remain for joint review last; indexing stays disabled.
+
+---
+
 # Deployment preparation update — 3 October 2026
 
 The current reviewed build is now deployed to https://ashy-mud-035919310.1.azurestaticapps.net/ and all 18 automated tests passed against Azure. Source commit b517061 is saved and pushed. This supersedes earlier statements below that the local build has not been deployed. It is still a review release with noindex, review labels and draft policy notices.

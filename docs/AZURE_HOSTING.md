@@ -1,6 +1,6 @@
 # Azure hosting and release preparation
 
-Updated 3 October 2026.
+Updated 4 October 2026.
 
 ## Verified Tarian resource
 
@@ -25,13 +25,17 @@ TARIAN_TEST_BASE_URL=https://ashy-mud-035919310.1.azurestaticapps.net npm test
 
 The suite allows only the known Azure and Tarian custom hostnames. The local suite remains `npm run validate`. Build output is `dist/`; deploy it as prebuilt static output with no API. The Azure deployment credential was read directly into process memory and never persisted or printed.
 
-## Domain preparation — awaiting Cloudflare access
+## Domain setup — 4 October 2026
 
-Azure ownership verification has been initiated for `tarianventures.com` and `www.tarianventures.com`; both are Validating. Cloudflare is currently at its sign-in screen. No DNS records have been changed. Existing IONOS MX/SPF and all other email records must be preserved.
+Cloudflare sign-in verified. Added three records only:
 
-Retrieve the current public verification values with `az staticwebapp hostname list -n tarian-public-web-prod -g tarian-public-web-prod_group`. Add the required TXT records at `@` and `www` respectively. Validate ownership first; use DNS-only CNAME records to the Azure hostname (Cloudflare apex flattening) for website routing when ready. Verify HTTPS before relying on either hostname.
+- TXT at `@`: current Azure ownership value (read from hostname list).
+- DNS-only CNAME at `@`: `ashy-mud-035919310.1.azurestaticapps.net`, flattened by Cloudflare.
+- DNS-only CNAME at `www`: same Azure hostname.
 
-After both custom names are validated and reachable, designate `tarianventures.com` as Azure's default domain. This should redirect www and the generated Azure hostname to the primary domain; verify status codes, path and query preservation. Do not enable a redirect before its destination works.
+The apex uses TXT validation. The www Azure binding was switched to CNAME delegation, avoiding a conflicting TXT and CNAME at the same subdomain. Original IONOS MX, SPF, DKIM, DMARC and other existing records were preserved. Authoritative Cloudflare DNS and the 1.1.1.1 public resolver return the new records. Cloudflare is DNS-only for website traffic; no proxy, analytics or additional service was enabled.
+
+Azure still reports both domains as Validating with no error; certificate provisioning and local resolver propagation are pending. Do not bypass TLS certificate checks. Once both names are validated and HTTPS is working, set `tarianventures.com` as the default in Azure Custom domains. Then test www and generated-host redirects, preserving paths/query strings, and run the full suite on the primary domain. No default-domain redirect has yet been set.
 
 References: https://learn.microsoft.com/en-us/azure/static-web-apps/apex-domain-external and https://learn.microsoft.com/en-us/azure/static-web-apps/custom-domain-default .
 
